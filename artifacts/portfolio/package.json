@@ -6,7 +6,11 @@
   "scripts": {
     "dev": "vite --port 5000 --host",
     "build": "tsc -b && vite build",
-    "preview": "vite preview --port 5000 --host"
+    "preview": "vite preview --port 5000 --host",
+    "lint:tokens": "bash scripts/check-tokens.sh",
+    "lint:css": "stylelint \"src/**/*.module.css\" --config .stylelintrc.json",
+    "lint": "npm run lint:tokens && npm run lint:css",
+    "check": "tsc --noEmit && npm run lint"
   },
   "dependencies": {
     "framer-motion": "^11.0.0",
@@ -17,11 +21,14 @@
     "react-router-dom": "^6.24.0"
   },
   "devDependencies": {
-    "@types/node": "^26.1.1",
-    "@types/react": "^18.3.31",
-    "@types/react-dom": "^18.3.7",
-    "@vitejs/plugin-react": "^4.7.0",
-    "typescript": "^5.9.3",
-    "vite": "^5.4.21"
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "stylelint": "^16.0.0",
+    "stylelint-config-standard": "^36.0.0",
+    "stylelint-declaration-strict-value": "^1.10.0",
+    "typescript": "^5.4.5",
+    "vite": "^5.3.1"
   }
 }

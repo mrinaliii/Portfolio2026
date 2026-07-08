@@ -1,111 +1,153 @@
 /* =============================================================================
-   DESIGN TOKEN REFERENCE: "Precision at Rest"
-   All CSS Custom Properties — dark mode (default).
-   Light mode overrides live in global.css under [data-theme="light"].
-   Components reference ONLY semantic tokens, never raw palette values.
+   DESIGN TOKENS — "Precision at Rest"
+   Single source of truth for every visual value in the system.
+
+   RULES FOR ALL COMPONENT CSS:
+   ─ Every color     → var(--color-*)
+   ─ Every spacing   → var(--space-*) or a documented component token
+   ─ Every font-size → var(--text-*)
+   ─ Every radius    → var(--radius-base) or var(--radius-sm) only
+   ─ Every shadow    → var(--shadow-*)
+   ─ Every duration  → var(--duration-*)
+   ─ Every easing    → var(--ease-*)
+   ─ Every z-index   → var(--z-*)
+
+   If a value you need is not here, ADD IT HERE — never invent a local value
+   inside a component CSS Module. Raw hex, px, or ms values in component
+   files are a build violation (enforced by stylelint).
+
+   BREAKPOINTS — CSS custom properties cannot be used inside @media rules
+   (CSS specification limitation). Use these documented pixel values directly:
+     Mobile:  < 640px
+     Tablet:  640px – 1023px
+     Desktop: 1024px – 1279px
+     Wide:    ≥ 1280px
    ============================================================================= */
 
 :root {
-  /* ---------------------------------------------------------------------------
-     PALETTE — Raw named values. Components never use these directly.
-     Reference semantic tokens below instead.
-     --------------------------------------------------------------------------- */
 
-  /* Core dark palette */
-  --color-void:            #070911;
-  --color-abyss:           #0b0e18;
-  --color-slate-panel:     #0f1522;
-  --color-slate-raised:    #19253a;
-  --color-slate-edge:      #1e2d42;
-  --color-slate-trim:      #2d3f58;
+  /* ===========================================================================
+     1. COLOR PALETTE
+     Raw named values — never reference these from component code.
+     Use semantic tokens (section 2) instead.
+     =========================================================================== */
 
-  /* Typography */
-  --color-starlight:       #dce8f5;
-  --color-steel:           #7f96b2;
-  --color-slate-mist:      #4d6275;
+  /* Dark palette */
+  --color-void:              #070911;
+  --color-abyss:             #0b0e18;
+  --color-slate-panel:       #0f1522;
+  --color-slate-raised:      #19253a;
+  --color-slate-edge:        #1e2d42;
+  --color-slate-trim:        #2d3f58;
 
-  /* Accent — Ice Signal */
-  --color-ice-signal:      #5ba8d4;
-  --color-ice-signal-dim:  #3a6f94;
+  /* Typography palette */
+  --color-starlight:         #dce8f5;
+  --color-steel:             #7f96b2;
+  --color-slate-mist:        #4d6275;
+
+  /* Accent */
+  --color-ice-signal:        #5ba8d4;
+  --color-ice-signal-dim:    #3a6f94;
   --color-ice-signal-bright: #73bfe3;
 
-  /* Light palette (raw — used in light-mode semantic override block) */
-  --color-frost:           #f0f5fa;
-  --color-frost-recessed:  #e6edf6;
-  --color-pure:            #ffffff;
-  --color-pure-raised:     #f4f8fc;
-  --color-mist-edge:       #d0dde8;
-  --color-mist-trim:       #b8ccd8;
-  --color-ink:             #0c1825;
-  --color-ink-secondary:   #3d5a72;
-  --color-ink-muted:       #628199;
+  /* Light palette */
+  --color-frost:             #f0f5fa;
+  --color-frost-recessed:    #e6edf6;
+  --color-pure:              #ffffff;
+  --color-pure-raised:       #f4f8fc;
+  --color-mist-edge:         #d0dde8;
+  --color-mist-trim:         #b8ccd8;
+  --color-ink:               #0c1825;
+  --color-ink-secondary:     #3d5a72;
+  --color-ink-muted:         #628199;
 
-  /* ---------------------------------------------------------------------------
-     SEMANTIC TOKENS — Dark mode defaults.
-     Theme switching only changes these tokens; component CSS stays the same.
-     --------------------------------------------------------------------------- */
+  /* ===========================================================================
+     2. SEMANTIC COLOR TOKENS — Dark mode defaults
+     These are the ONLY color tokens components may reference.
+     Theme switching updates only these tokens — no component CSS changes.
+     =========================================================================== */
 
   /* Surface */
-  --color-canvas:          #070911;
-  --color-recessed:        #0b0e18;
-  --color-surface:         #0f1522;
-  --color-surface-raised:  #19253a;
+  --color-canvas:            #070911;
+  --color-recessed:          #0b0e18;
+  --color-surface:           #0f1522;
+  --color-surface-raised:    #19253a;
 
   /* Border */
-  --color-border:          #1e2d42;
-  --color-border-strong:   #2d3f58;
+  --color-border:            #1e2d42;
+  --color-border-strong:     #2d3f58;
 
   /* Text */
-  --color-text:            #dce8f5;
-  --color-text-secondary:  #7f96b2;
-  --color-text-muted:      #4d6275;
+  --color-text:              #dce8f5;
+  --color-text-secondary:    #7f96b2;
+  --color-text-muted:        #4d6275;
 
   /* Navigation */
-  --color-nav-bg:          rgba(7, 9, 17, 0.75);
+  --color-nav-bg:            rgba(7, 9, 17, 0.75);
+  --color-nav-bg-scrolled:   rgba(7, 9, 17, 0.92);
 
-  /* ---------------------------------------------------------------------------
-     SPACING — Base unit: 4px. All values are multiples of 4.
-     --------------------------------------------------------------------------- */
+  /* Overlay — resume drawer backdrop, mobile nav backdrop */
+  --color-overlay:           rgba(7, 9, 17, 0.60);
 
-  --space-1:   4px;
-  --space-2:   8px;
-  --space-3:   12px;
-  --space-4:   16px;
-  --space-5:   20px;
-  --space-6:   24px;
-  --space-8:   32px;
-  --space-10:  40px;
-  --space-12:  48px;
-  --space-16:  64px;
-  --space-20:  80px;
-  --space-24:  96px;
-  --space-32:  128px;
-  --space-40:  160px;
+  /* Ambient glow — Knowledge Core loading state only */
+  --color-glow-ambient:      rgba(91, 168, 212, 0.04);
+  --color-glow-ambient-peak: rgba(91, 168, 212, 0.08);
 
-  /* ---------------------------------------------------------------------------
-     BORDER RADIUS — Two values only, no exceptions.
-     --------------------------------------------------------------------------- */
+  /* ===========================================================================
+     3. SPACING — Base unit: 4px. All values are exact multiples of 4.
+     Exception: --space-3-5 (14px = 3.5×4) exists solely for the KC input
+     padding-y, which the Design System specifies as 14px.
+     =========================================================================== */
 
-  --radius-base:  12px;  /* Cards, panels, containers */
-  --radius-sm:    10px;  /* Buttons, tags, badges, inputs */
+  --space-1:    4px;
+  --space-2:    8px;
+  --space-3:    12px;
+  --space-3-5:  14px;   /* KC search input padding-y — DS-specified exception */
+  --space-4:    16px;
+  --space-5:    20px;
+  --space-6:    24px;
+  --space-7:    28px;   /* KC response block horizontal padding */
+  --space-8:    32px;
+  --space-10:   40px;
+  --space-12:   48px;
+  --space-16:   64px;
+  --space-20:   80px;
+  --space-24:   96px;
+  --space-32:   128px;
+  --space-40:   160px;
 
-  /* ---------------------------------------------------------------------------
-     SHADOWS — Nearly absent; elevation via color differential and borders.
-     --------------------------------------------------------------------------- */
+  /* Component-specific spacing — still token-based, never inlined */
+  --input-padding-y:      var(--space-3-5);   /* 14px — KC search input */
+  --input-icon-clearance: 44px;               /* LC search icon + gap clearance */
+
+  /* ===========================================================================
+     4. BORDER RADIUS — Two values only, no exceptions.
+     Never use 9999px (pill), never use 0 except full-bleed dividers.
+     =========================================================================== */
+
+  --radius-base: 12px;   /* Cards, panels, containers */
+  --radius-sm:   10px;   /* Buttons, tags, badges, inputs */
+
+  /* ===========================================================================
+     5. SHADOWS — Nearly absent. Elevation via color + border, not shadow.
+     --shadow-card is used ONLY on project card hover — never at rest.
+     =========================================================================== */
 
   --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.4), 0 4px 16px rgba(5, 8, 18, 0.5);
 
-  /* ---------------------------------------------------------------------------
-     TYPOGRAPHY — Responsive scale reference.
-     Usage: apply the font-size and the matching line-height/tracking together.
-     --------------------------------------------------------------------------- */
+  /* ===========================================================================
+     6. TYPOGRAPHY — Font families and full type scale.
+     Use the named text-* + leading-* + tracking-* triplets together.
+     Never hardcode font-size, line-height, or letter-spacing in components.
+     =========================================================================== */
 
   /* Font families */
-  --font-sans:  'Syne', system-ui, -apple-system, sans-serif;
-  --font-mono:  'Geist Mono', 'GeistMono', ui-monospace, 'Cascadia Code', monospace;
+  --font-sans: 'Syne', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: 'Geist Mono', 'GeistMono', ui-monospace, 'Cascadia Code', monospace;
 
-  /* Text size tokens (font-size only — pair with --leading-* and --tracking-*) */
+  /* Font sizes */
   --text-stamp:      11px;
+  --text-button-ghost: 13px;   /* Ghost/text button — not in main reading scale */
   --text-caption:    12px;
   --text-body-sm:    14px;
   --text-body:       16px;
@@ -118,60 +160,172 @@
   --text-display-lg: 88px;
   --text-hero:       104px;
 
+  /* Responsive hero type — applied via media query in section CSS */
+  --text-hero-tablet: 72px;    /* Same as --text-display; aliased for clarity */
+  --text-hero-mobile: 48px;    /* Mobile headline override */
+  --text-mobile-nav:  32px;    /* Full-screen mobile nav link size */
+
   /* Line heights */
-  --leading-stamp:      1.2;
-  --leading-caption:    1.4;
-  --leading-body-sm:    1.6;
-  --leading-body:       1.65;
-  --leading-body-lg:    1.6;
-  --leading-subheading: 1.4;
-  --leading-heading-sm: 1.2;
-  --leading-heading:    1.1;
-  --leading-heading-lg: 1.05;
-  --leading-display:    1.0;
-  --leading-display-lg: 0.95;
-  --leading-hero:       0.9;
+  --leading-stamp:       1.2;
+  --leading-caption:     1.4;
+  --leading-body-sm:     1.6;
+  --leading-body:        1.65;
+  --leading-body-lg:     1.6;
+  --leading-subheading:  1.4;
+  --leading-heading-sm:  1.2;
+  --leading-heading:     1.1;
+  --leading-heading-lg:  1.05;
+  --leading-display:     1.0;
+  --leading-display-lg:  0.95;
+  --leading-hero:        0.9;
 
   /* Letter spacing */
-  --tracking-stamp:      0.18em;   /* Geist Mono uppercase labels */
-  --tracking-caption:    0.02em;
-  --tracking-body:       0;
-  --tracking-body-lg:    -0.01em;
-  --tracking-subheading: -0.02em;
-  --tracking-heading-sm: -0.03em;
-  --tracking-heading:    -0.04em;
-  --tracking-heading-lg: -0.05em;
-  --tracking-display:    -0.06em;
-  --tracking-display-lg: -0.07em;
-  --tracking-hero:       -0.08em;
+  --tracking-stamp:          0.18em;   /* Geist Mono uppercase labels — positive tracking */
+  --tracking-button-ghost:   0.08em;   /* Ghost button uppercase tracking */
+  --tracking-caption:        0.02em;
+  --tracking-body:           0;
+  --tracking-body-lg:       -0.01em;
+  --tracking-subheading:    -0.02em;
+  --tracking-heading-sm:    -0.03em;
+  --tracking-heading:       -0.04em;
+  --tracking-heading-lg:    -0.05em;
+  --tracking-display:       -0.06em;
+  --tracking-display-lg:    -0.07em;
+  --tracking-hero:          -0.08em;
 
-  /* ---------------------------------------------------------------------------
-     LAYOUT — Grid and container dimensions.
-     --------------------------------------------------------------------------- */
+  /* ===========================================================================
+     7. MOTION — Duration and easing scale.
+     All animation durations and easings must come from these tokens.
+     Exception: prefers-reduced-motion override hardcodes 0.01ms — this is
+     an accessibility safety net value, not a design token.
+     =========================================================================== */
 
-  --container-max:  1120px;
-  --side-margin-mobile:  20px;
-  --side-margin-tablet:  40px;
-  --side-margin-desktop: 48px;
-  --col-gutter-mobile:   16px;
-  --col-gutter-tablet:   24px;
-  --col-gutter-desktop:  32px;
+  /* Duration scale */
+  --duration-micro:              150ms;   /* Color/opacity toggle */
+  --duration-standard:           220ms;   /* Hover reveals, underlines */
+  --duration-component:          320ms;   /* Card lift, menu open */
+  --duration-theme:              300ms;   /* Theme color transition */
+  --duration-entrance:           500ms;   /* Section scroll entrance */
+  --duration-hero:               700ms;   /* Hero entrance elements */
+  --duration-nav-scroll:         200ms;   /* Nav bg opacity on scroll */
+  --duration-anchor-flash:       600ms;   /* Nav link click color hold */
+  --duration-tooltip-show:       150ms;   /* Tooltip reveal */
+  --duration-tooltip-hold:      1800ms;   /* Tooltip hold before hide */
+  --duration-tooltip-hide:       300ms;   /* Tooltip dismiss */
+  --duration-precision-stagger:   35ms;   /* Stack section token-reveal interval */
+  --duration-char-render:         18ms;   /* KC character-by-character render tick */
+  --duration-overlay:            220ms;   /* Backdrop fade in/out */
+  --duration-drawer-in:          320ms;   /* Resume drawer slide-in */
+  --duration-drawer-out:         220ms;   /* Resume drawer slide-out */
 
-  /* Nav offset for anchor scroll */
-  --nav-height: 64px;
+  /* Easing scale */
+  --ease-out:       ease-out;
+  --ease-standard:  cubic-bezier(0.25, 0.1, 0.25, 1);   /* Standard — hover reveals */
+  --ease-component: cubic-bezier(0.40, 0, 0.20, 1);    /* Component transitions */
+  --ease-entrance:  cubic-bezier(0.16, 1, 0.30, 1);    /* Scroll entrance */
+  --ease-spring:    cubic-bezier(0.16, 1, 0.30, 1);    /* Drawer slide-in (alias of entrance) */
+  --ease-smooth:    cubic-bezier(0.40, 0, 1, 1);       /* Drawer slide-out — ease-in */
 
-  /* ---------------------------------------------------------------------------
-     MOTION — Duration and easing scale.
-     --------------------------------------------------------------------------- */
+  /* Entrance transform amount */
+  --translate-entrance:     24px;   /* fadeUp translateY — scroll entrance */
+  --translate-nav-entrance: 12px;   /* fadeDown translateY — nav stagger */
 
-  --duration-micro:     150ms;
-  --duration-standard:  220ms;
-  --duration-component: 320ms;
-  --duration-entrance:  500ms;
-  --duration-hero:      700ms;
+  /* ===========================================================================
+     8. LAYOUT — Grid, containers, nav, and drawer dimensions.
+     =========================================================================== */
 
-  --ease-out:      ease-out;
-  --ease-standard: cubic-bezier(0.25, 0.1, 0.25, 1);
-  --ease-component: cubic-bezier(0.4, 0, 0.2, 1);
-  --ease-entrance: cubic-bezier(0.16, 1, 0.3, 1);
+  --container-max:        1120px;
+  --side-margin-mobile:     20px;
+  --side-margin-tablet:     40px;
+  --side-margin-desktop:    48px;
+  --col-gutter-mobile:      16px;
+  --col-gutter-tablet:      24px;
+  --col-gutter-desktop:     32px;
+
+  --nav-height:              56px;   /* Fixed nav bar height — matches DS Section 14 */
+  --drawer-width:           480px;   /* Resume drawer width on desktop */
+
+  /* ===========================================================================
+     9. VISUAL EFFECTS
+     =========================================================================== */
+
+  /* Backdrop filter — nav blur */
+  --backdrop-blur:        blur(12px);
+
+  /* Parallax multipliers — JS reads these for hero scroll effects */
+  --parallax-headline:    0.3;    /* Headline moves at 30% of scroll speed */
+  --parallax-portrait:    0.15;   /* Portrait moves at 15% of scroll speed */
+
+  /* Scroll depth indicator */
+  --scroll-indicator-width: 1.5px;
+
+  /* Signal Trace SVG line */
+  --opacity-signal-trace:   0.4;
+
+  /* ===========================================================================
+     10. FOCUS & INTERACTION
+     These values power the global focus ring and interactive element states.
+     =========================================================================== */
+
+  --focus-ring-width:  1.5px;
+  --focus-ring-offset: 3px;
+  --focus-ring-radius: 2px;
+
+  /* ===========================================================================
+     11. SCROLLBAR
+     =========================================================================== */
+
+  --scrollbar-size:   6px;
+  --scrollbar-radius: 3px;
+
+  /* ===========================================================================
+     12. Z-INDEX SCALE
+     Every layered element must use one of these. Never write a raw z-index.
+     =========================================================================== */
+
+  --z-base:    0;
+  --z-raised:  1;
+  --z-overlay: 150;   /* Backdrop behind drawers and mobile nav */
+  --z-nav:     100;   /* Fixed navigation bar */
+  --z-drawer:  200;   /* Resume drawer and mobile nav overlay */
+  --z-skip:   9999;   /* SkipLink — always on top of everything */
+}
+
+/* =============================================================================
+   LIGHT MODE — Semantic token overrides only.
+   All components continue using the same var(--color-*) names.
+   The raw palette tokens above do not change; only semantics are remapped.
+   ============================================================================= */
+
+[data-theme='light'] {
+  /* Surface */
+  --color-canvas:          #f0f5fa;
+  --color-recessed:        #e6edf6;
+  --color-surface:         #ffffff;
+  --color-surface-raised:  #f4f8fc;
+
+  /* Border */
+  --color-border:          #d0dde8;
+  --color-border-strong:   #b8ccd8;
+
+  /* Text */
+  --color-text:            #0c1825;
+  --color-text-secondary:  #3d5a72;
+  /* #628199 — updated from initial draft #7a98ad to meet large-text AA (3:1+).
+     Use only for stamps, dates, and decorative labels ≥ 16px. Not body copy. */
+  --color-text-muted:      #628199;
+
+  /* Navigation */
+  --color-nav-bg:          rgba(240, 245, 250, 0.85);
+  --color-nav-bg-scrolled: rgba(240, 245, 250, 0.96);
+
+  /* Overlay */
+  --color-overlay:         rgba(12, 24, 37, 0.30);
+
+  /* Ambient glow — identical across themes (Ice Signal is theme-consistent) */
+  --color-glow-ambient:      rgba(91, 168, 212, 0.04);
+  --color-glow-ambient-peak: rgba(91, 168, 212, 0.08);
+
+  /* Shadow — slightly lighter on light surfaces */
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.10);
 }

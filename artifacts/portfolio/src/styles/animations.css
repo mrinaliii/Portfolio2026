@@ -1,18 +1,30 @@
 /* =============================================================================
    ANIMATIONS — All @keyframes and reduced-motion overrides.
-   Import after tokens.css and global.css.
+   Duration and easing values come exclusively from tokens.css.
+
+   NOTE ON KEYFRAME TRANSFORM VALUES:
+   Translate amounts (--translate-entrance, --translate-nav-entrance) are
+   consumed from tokens. Scale values inside keyframes (0.8, 1.4, etc.) are
+   intentional keyframe-specific visual multipliers — they are not spacing
+   tokens and are correct as literals inside @keyframes blocks.
+
+   NOTE ON REDUCED-MOTION VALUES:
+   The 0.01ms values in the prefers-reduced-motion block are an
+   accessibility safety-net constant, not a design token — they must be
+   exactly this value to allow JS lifecycle hooks to detect "animation ended"
+   without perceivable delay.
    ============================================================================= */
 
 /* ---------------------------------------------------------------------------
    ENTRANCE ANIMATIONS
-   Every section enters with a subtle upward translate + fade.
-   Applied via the .animate-in class when an element enters the viewport.
+   Sections enter with an upward translate + fade.
+   --translate-entrance is the canonical entrance distance (from tokens.css).
    --------------------------------------------------------------------------- */
 
 @keyframes fadeUp {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(var(--translate-entrance));
   }
   to {
     opacity: 1;
@@ -21,18 +33,14 @@
 }
 
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 @keyframes fadeDown {
   from {
     opacity: 0;
-    transform: translateY(-12px);
+    transform: translateY(calc(-1 * var(--translate-nav-entrance)));
   }
   to {
     opacity: 1;
@@ -45,12 +53,8 @@
    --------------------------------------------------------------------------- */
 
 @keyframes shimmer {
-  from {
-    background-position: -200% center;
-  }
-  to {
-    background-position: 200% center;
-  }
+  from { background-position: -200% center; }
+  to   { background-position:  200% center; }
 }
 
 /* ---------------------------------------------------------------------------
@@ -58,82 +62,53 @@
    --------------------------------------------------------------------------- */
 
 @keyframes drawLine {
-  from {
-    stroke-dashoffset: 1;
-  }
-  to {
-    stroke-dashoffset: 0;
-  }
+  from { stroke-dashoffset: 1; }
+  to   { stroke-dashoffset: 0; }
 }
 
 /* ---------------------------------------------------------------------------
-   RADAR PULSE — Hero ambient effect
+   RADAR PULSE — Hero ambient (canvas rendered, not CSS driven)
+   This keyframe is used as a CSS fallback for the reduced-motion path.
    --------------------------------------------------------------------------- */
 
 @keyframes radarPulse {
-  0% {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  40% {
-    opacity: 0.04;
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.4);
-  }
+  0%   { opacity: 0; transform: scale(0.8);  }
+  40%  { opacity: 0.04;                      }
+  100% { opacity: 0; transform: scale(1.4);  }
 }
 
 /* ---------------------------------------------------------------------------
-   AMBIENT GLOW — Knowledge Core loading state
+   AMBIENT GLOW — Knowledge Core loading state (one pulse per query)
+   Colors reference semantic tokens even though they're inside @keyframes.
    --------------------------------------------------------------------------- */
 
 @keyframes ambientGlow {
-  0% {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  50% {
-    opacity: 0.6;
-    transform: scale(1.05);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0.95);
-  }
+  0%   { opacity: 0; transform: scale(0.95); }
+  50%  { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 0; transform: scale(0.95); }
 }
 
 /* ---------------------------------------------------------------------------
-   LOADING SPINNER — Search input arc during KC loading
+   SEARCH ICON ARC — KC loading state
    --------------------------------------------------------------------------- */
 
 @keyframes arcRotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg);   }
+  to   { transform: rotate(360deg); }
 }
 
 /* ---------------------------------------------------------------------------
-   BORDER PULSE — Input during KC loading
+   INPUT BORDER PULSE — KC loading state
    --------------------------------------------------------------------------- */
 
 @keyframes borderPulse {
-  0% {
-    border-color: var(--color-ice-signal-dim);
-  }
-  50% {
-    border-color: var(--color-ice-signal);
-  }
-  100% {
-    border-color: var(--color-ice-signal-dim);
-  }
+  0%   { border-color: var(--color-ice-signal-dim); }
+  50%  { border-color: var(--color-ice-signal);     }
+  100% { border-color: var(--color-ice-signal-dim); }
 }
 
 /* ---------------------------------------------------------------------------
-   THEME TOGGLE ICON — Crossfade with 15° rotation
+   THEME TOGGLE ICON — 15° rotation crossfade
    --------------------------------------------------------------------------- */
 
 @keyframes iconEnter {
@@ -160,19 +135,16 @@
 
 /* ---------------------------------------------------------------------------
    ANCHOR COLOR FLASH — Nav link click (Milestone 10)
+   Hold duration is --duration-anchor-flash (from tokens).
    --------------------------------------------------------------------------- */
 
 @keyframes anchorFlash {
-  0% {
-    color: var(--color-ice-signal);
-  }
-  100% {
-    color: var(--color-text);
-  }
+  0%   { color: var(--color-ice-signal); }
+  100% { color: var(--color-text);       }
 }
 
 /* ---------------------------------------------------------------------------
-   UTILITY CLASSES
+   UTILITY CLASSES — Apply these to trigger the above animations.
    --------------------------------------------------------------------------- */
 
 .animate-fade-up {
@@ -188,9 +160,10 @@
 }
 
 /* ---------------------------------------------------------------------------
-   REDUCED MOTION — Safety net for all animations.
-   The useReducedMotion() hook provides additional JS-level control for
-   canvas and JS-driven animations. This CSS rule is the base safety net.
+   REDUCED MOTION — Accessibility safety net.
+   The 0.01ms values are SR/lifecycle constants — not design tokens.
+   The useReducedMotion() hook provides additional control for JS animations
+   (canvas star field, drift particles, parallax, precision reveal).
    --------------------------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {

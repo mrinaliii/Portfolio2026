@@ -2,12 +2,10 @@
   position: fixed;
   top: var(--space-4);
   left: var(--space-4);
-  z-index: 9999;
-
+  z-index: var(--z-skip);
   display: inline-flex;
   align-items: center;
   padding: var(--space-2) var(--space-4);
-
   background-color: var(--color-ice-signal);
   color: var(--color-void);
   font-family: var(--font-sans);
@@ -16,18 +14,19 @@
   line-height: 1;
   text-decoration: none;
   border-radius: var(--radius-sm);
-
-  /* Visually hidden until focused */
+  /* Hidden until focused — translateY(-120%) is a component behavior value,
+     not a spacing token: it must exceed the element's own height to hide it */
   transform: translateY(-120%);
   opacity: 0;
   transition:
     transform var(--duration-micro) var(--ease-out),
-    opacity var(--duration-micro) var(--ease-out);
+    opacity   var(--duration-micro) var(--ease-out);
 }
 
 .skipLink:focus-visible {
   transform: translateY(0);
   opacity: 1;
-  outline: 1.5px solid var(--color-void);
-  outline-offset: 3px;
+  /* Override global focus ring: void color on the ice-signal background */
+  outline: var(--focus-ring-width) solid var(--color-void);
+  outline-offset: var(--focus-ring-offset);
 }
