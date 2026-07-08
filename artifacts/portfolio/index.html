@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Theme detection: resolves synchronously before any pixel renders. Prevents FOUC. -->
+    <script>
+      (function () {
+        var stored = localStorage.getItem('theme');
+        var preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', stored || preferred);
+      })();
+    </script>
+
+    <!-- Adaptive favicon -->
+    <link rel="icon" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="/favicon-light.svg" media="(prefers-color-scheme: light)" />
+    <link rel="icon" href="/favicon-dark.svg" />
+
+    <!--
+      Font preloads — uncomment once self-hosted woff2 files are present in public/fonts/
+      <link rel="preload" href="/fonts/Syne-variable.woff2" as="font" type="font/woff2" crossorigin />
+      <link rel="preload" href="/fonts/GeistMono-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    -->
+
+    <!-- Google Fonts (active until self-hosted fonts are dropped into public/fonts/) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Mrinali Charhate — AI, ML &amp; Cybersecurity Engineer</title>
+    <meta
+      name="description"
+      content="Portfolio of Mrinali Charhate, a CS student specializing in AI, ML, and cybersecurity. Building intelligent systems at the intersection of machine learning and security."
+    />
+
+    <!-- Plausible Analytics — deferred, never blocks rendering -->
+    <script
+      defer
+      data-domain="your-domain.repl.co"
+      src="https://plausible.io/js/script.tagged-events.js"
+    ></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

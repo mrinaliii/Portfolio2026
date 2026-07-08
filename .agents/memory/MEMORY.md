@@ -1,0 +1,1 @@
+- [Portfolio scaffold setup](portfolio-scaffold.md) — Milestone 0 wiring decisions and known limitations (fonts, font preloads, build config)

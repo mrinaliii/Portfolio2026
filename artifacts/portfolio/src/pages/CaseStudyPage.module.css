@@ -1,0 +1,4 @@
+.placeholder {
+  padding-top: var(--nav-height);
+  min-height: 100dvh;
+}

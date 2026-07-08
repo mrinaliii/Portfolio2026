@@ -1,0 +1,177 @@
+/* =============================================================================
+   DESIGN TOKEN REFERENCE: "Precision at Rest"
+   All CSS Custom Properties — dark mode (default).
+   Light mode overrides live in global.css under [data-theme="light"].
+   Components reference ONLY semantic tokens, never raw palette values.
+   ============================================================================= */
+
+:root {
+  /* ---------------------------------------------------------------------------
+     PALETTE — Raw named values. Components never use these directly.
+     Reference semantic tokens below instead.
+     --------------------------------------------------------------------------- */
+
+  /* Core dark palette */
+  --color-void:            #070911;
+  --color-abyss:           #0b0e18;
+  --color-slate-panel:     #0f1522;
+  --color-slate-raised:    #19253a;
+  --color-slate-edge:      #1e2d42;
+  --color-slate-trim:      #2d3f58;
+
+  /* Typography */
+  --color-starlight:       #dce8f5;
+  --color-steel:           #7f96b2;
+  --color-slate-mist:      #4d6275;
+
+  /* Accent — Ice Signal */
+  --color-ice-signal:      #5ba8d4;
+  --color-ice-signal-dim:  #3a6f94;
+  --color-ice-signal-bright: #73bfe3;
+
+  /* Light palette (raw — used in light-mode semantic override block) */
+  --color-frost:           #f0f5fa;
+  --color-frost-recessed:  #e6edf6;
+  --color-pure:            #ffffff;
+  --color-pure-raised:     #f4f8fc;
+  --color-mist-edge:       #d0dde8;
+  --color-mist-trim:       #b8ccd8;
+  --color-ink:             #0c1825;
+  --color-ink-secondary:   #3d5a72;
+  --color-ink-muted:       #628199;
+
+  /* ---------------------------------------------------------------------------
+     SEMANTIC TOKENS — Dark mode defaults.
+     Theme switching only changes these tokens; component CSS stays the same.
+     --------------------------------------------------------------------------- */
+
+  /* Surface */
+  --color-canvas:          #070911;
+  --color-recessed:        #0b0e18;
+  --color-surface:         #0f1522;
+  --color-surface-raised:  #19253a;
+
+  /* Border */
+  --color-border:          #1e2d42;
+  --color-border-strong:   #2d3f58;
+
+  /* Text */
+  --color-text:            #dce8f5;
+  --color-text-secondary:  #7f96b2;
+  --color-text-muted:      #4d6275;
+
+  /* Navigation */
+  --color-nav-bg:          rgba(7, 9, 17, 0.75);
+
+  /* ---------------------------------------------------------------------------
+     SPACING — Base unit: 4px. All values are multiples of 4.
+     --------------------------------------------------------------------------- */
+
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-5:   20px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-10:  40px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-20:  80px;
+  --space-24:  96px;
+  --space-32:  128px;
+  --space-40:  160px;
+
+  /* ---------------------------------------------------------------------------
+     BORDER RADIUS — Two values only, no exceptions.
+     --------------------------------------------------------------------------- */
+
+  --radius-base:  12px;  /* Cards, panels, containers */
+  --radius-sm:    10px;  /* Buttons, tags, badges, inputs */
+
+  /* ---------------------------------------------------------------------------
+     SHADOWS — Nearly absent; elevation via color differential and borders.
+     --------------------------------------------------------------------------- */
+
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.4), 0 4px 16px rgba(5, 8, 18, 0.5);
+
+  /* ---------------------------------------------------------------------------
+     TYPOGRAPHY — Responsive scale reference.
+     Usage: apply the font-size and the matching line-height/tracking together.
+     --------------------------------------------------------------------------- */
+
+  /* Font families */
+  --font-sans:  'Syne', system-ui, -apple-system, sans-serif;
+  --font-mono:  'Geist Mono', 'GeistMono', ui-monospace, 'Cascadia Code', monospace;
+
+  /* Text size tokens (font-size only — pair with --leading-* and --tracking-*) */
+  --text-stamp:      11px;
+  --text-caption:    12px;
+  --text-body-sm:    14px;
+  --text-body:       16px;
+  --text-body-lg:    18px;
+  --text-subheading: 20px;
+  --text-heading-sm: 28px;
+  --text-heading:    40px;
+  --text-heading-lg: 56px;
+  --text-display:    72px;
+  --text-display-lg: 88px;
+  --text-hero:       104px;
+
+  /* Line heights */
+  --leading-stamp:      1.2;
+  --leading-caption:    1.4;
+  --leading-body-sm:    1.6;
+  --leading-body:       1.65;
+  --leading-body-lg:    1.6;
+  --leading-subheading: 1.4;
+  --leading-heading-sm: 1.2;
+  --leading-heading:    1.1;
+  --leading-heading-lg: 1.05;
+  --leading-display:    1.0;
+  --leading-display-lg: 0.95;
+  --leading-hero:       0.9;
+
+  /* Letter spacing */
+  --tracking-stamp:      0.18em;   /* Geist Mono uppercase labels */
+  --tracking-caption:    0.02em;
+  --tracking-body:       0;
+  --tracking-body-lg:    -0.01em;
+  --tracking-subheading: -0.02em;
+  --tracking-heading-sm: -0.03em;
+  --tracking-heading:    -0.04em;
+  --tracking-heading-lg: -0.05em;
+  --tracking-display:    -0.06em;
+  --tracking-display-lg: -0.07em;
+  --tracking-hero:       -0.08em;
+
+  /* ---------------------------------------------------------------------------
+     LAYOUT — Grid and container dimensions.
+     --------------------------------------------------------------------------- */
+
+  --container-max:  1120px;
+  --side-margin-mobile:  20px;
+  --side-margin-tablet:  40px;
+  --side-margin-desktop: 48px;
+  --col-gutter-mobile:   16px;
+  --col-gutter-tablet:   24px;
+  --col-gutter-desktop:  32px;
+
+  /* Nav offset for anchor scroll */
+  --nav-height: 64px;
+
+  /* ---------------------------------------------------------------------------
+     MOTION — Duration and easing scale.
+     --------------------------------------------------------------------------- */
+
+  --duration-micro:     150ms;
+  --duration-standard:  220ms;
+  --duration-component: 320ms;
+  --duration-entrance:  500ms;
+  --duration-hero:      700ms;
+
+  --ease-out:      ease-out;
+  --ease-standard: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-component: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-entrance: cubic-bezier(0.16, 1, 0.3, 1);
+}
