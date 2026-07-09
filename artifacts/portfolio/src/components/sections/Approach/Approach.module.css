@@ -50,6 +50,8 @@
   line-height: var(--leading-body);
   letter-spacing: var(--tracking-body);
   color: var(--color-text-secondary);
+  text-align: justify;
+  text-align-last: left;
 }
 
 /* Mobile: 1-up stack with hairline separators */

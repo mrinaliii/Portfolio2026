@@ -35,6 +35,8 @@
   letter-spacing: var(--tracking-body-lg);
   color: var(--color-text-secondary);
   margin-bottom: var(--space-5);
+  text-align: justify;
+  text-align-last: left;
 }
 
 .body p:last-child {

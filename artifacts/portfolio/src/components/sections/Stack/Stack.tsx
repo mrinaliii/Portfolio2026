@@ -1,4 +1,5 @@
 import { Section } from '../../layout/Section/Section';
+import { Container } from '../../layout/Container/Container';
 import { StampLabel } from '../../ui/StampLabel/StampLabel';
 import { PrecisionReveal } from './PrecisionReveal';
 import styles from './Stack.module.css';
@@ -62,21 +63,23 @@ const SKILL_GROUPS = [
 export function Stack() {
   return (
     <Section id="stack" data-section="stack" aria-labelledby="stack-heading">
-      <StampLabel className={styles.stamp}>Stack</StampLabel>
+      <Container>
+        <StampLabel className={styles.stamp}>Stack</StampLabel>
 
-      <h2 id="stack-heading" className={styles.heading}>
-        Technologies I Enjoy Working With
-      </h2>
+        <h2 id="stack-heading" className={styles.heading}>
+          Technologies I Enjoy Working With
+        </h2>
 
-      <PrecisionReveal groups={SKILL_GROUPS} />
+        <PrecisionReveal groups={SKILL_GROUPS} />
 
-      {/* Current Focus — ice-signal fires here (the one accent in this section) */}
-      <p className={styles.currentFocus}>
-        Currently deepening:{' '}
-        <span className={styles.focusTopic}>
-          AI security systems, vector databases, and adversarial machine learning
-        </span>
-      </p>
+        {/* Current Focus — ice-signal fires here (the one accent in this section) */}
+        <p className={styles.currentFocus}>
+          Currently deepening:{' '}
+          <span className={styles.focusTopic}>
+            AI security systems, vector databases, and adversarial machine learning
+          </span>
+        </p>
+      </Container>
     </Section>
   );
 }

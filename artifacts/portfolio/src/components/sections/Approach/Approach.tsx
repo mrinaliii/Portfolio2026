@@ -1,4 +1,5 @@
 import { Section } from '../../layout/Section/Section';
+import { Container } from '../../layout/Container/Container';
 import { StampLabel } from '../../ui/StampLabel/StampLabel';
 import { Hairline } from '../../layout/Hairline/Hairline';
 import styles from './Approach.module.css';
@@ -39,27 +40,29 @@ export function Approach() {
   return (
     <>
       <Section id="approach" data-section="approach" aria-labelledby="approach-heading">
-        <StampLabel className={styles.stamp}>Approach</StampLabel>
+        <Container>
+          <StampLabel className={styles.stamp}>Approach</StampLabel>
 
-        <h2 id="approach-heading" className={styles.heading}>
-          How I Think
-        </h2>
+          <h2 id="approach-heading" className={styles.heading}>
+            How I Think
+          </h2>
 
-        <div className={styles.grid}>
-          {PRINCIPLES.map((principle, i) => (
-            <article
-              key={principle.label}
-              className={styles.block}
-              style={{ '--stagger-delay': `${i * 80}ms` } as React.CSSProperties}
-            >
-              <StampLabel className={styles.principleLabel}>
-                {principle.label}
-              </StampLabel>
-              <h3 className={styles.principleHeading}>{principle.heading}</h3>
-              <p className={styles.principleBody}>{principle.body}</p>
-            </article>
-          ))}
-        </div>
+          <div className={styles.grid}>
+            {PRINCIPLES.map((principle, i) => (
+              <article
+                key={principle.label}
+                className={styles.block}
+                style={{ '--stagger-delay': `${i * 80}ms` } as React.CSSProperties}
+              >
+                <StampLabel className={styles.principleLabel}>
+                  {principle.label}
+                </StampLabel>
+                <h3 className={styles.principleHeading}>{principle.heading}</h3>
+                <p className={styles.principleBody}>{principle.body}</p>
+              </article>
+            ))}
+          </div>
+        </Container>
       </Section>
       <Hairline />
     </>

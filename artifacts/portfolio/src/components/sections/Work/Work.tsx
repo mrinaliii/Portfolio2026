@@ -1,6 +1,7 @@
 import { useCallback, useRef, useState } from 'react';
 import { ExternalLink } from 'lucide-react';
 import { Section } from '../../layout/Section/Section';
+import { Container } from '../../layout/Container/Container';
 import { StampLabel } from '../../ui/StampLabel/StampLabel';
 import { ProjectCard } from './ProjectCard';
 import { TechPanel } from './TechPanel';
@@ -51,56 +52,58 @@ export function Work() {
 
   return (
     <Section id="work" data-section="work" aria-labelledby="work-heading">
-      <StampLabel className={styles.stamp}>Selected Work</StampLabel>
+      <Container>
+        <StampLabel className={styles.stamp}>Selected Work</StampLabel>
 
-      <h2 id="work-heading" className={styles.heading}>
-        Projects That Reflect My Interests
-      </h2>
+        <h2 id="work-heading" className={styles.heading}>
+          Projects That Reflect My Interests
+        </h2>
 
-      <div className={styles.layout}>
-        {/* Cards */}
-        <div className={styles.grid}>
-          {PROJECTS.map((project) => (
-            <ProjectCard
-              key={project.slug}
-              project={project}
-              isHovered={hoveredProject?.slug === project.slug}
-              onMouseEnter={() => handleCardEnter(project)}
-              onMouseLeave={handleCardLeave}
-              cardRef={getCardRef(project.slug)}
+        <div className={styles.layout}>
+          {/* Cards */}
+          <div className={styles.grid}>
+            {PROJECTS.map((project) => (
+              <ProjectCard
+                key={project.slug}
+                project={project}
+                isHovered={hoveredProject?.slug === project.slug}
+                onMouseEnter={() => handleCardEnter(project)}
+                onMouseLeave={handleCardLeave}
+                cardRef={getCardRef(project.slug)}
+              />
+            ))}
+          </div>
+
+          {/* Tech Panel — desktop only */}
+          <div ref={panelRef as React.RefObject<HTMLDivElement>}>
+            <TechPanel
+              project={hoveredProject}
+              isVisible={hoveredProject !== null}
             />
-          ))}
+          </div>
         </div>
 
-        {/* Tech Panel — desktop only */}
-        <div ref={panelRef as React.RefObject<HTMLDivElement>}>
-          <TechPanel
-            project={hoveredProject}
-            isVisible={hoveredProject !== null}
-          />
+        {/* Signal Trace SVG — drawn between hovered card and tech panel */}
+        <SignalTrace
+          fromRef={fromRef}
+          toRef={toPanelRef}
+          isActive={hoveredProject !== null}
+        />
+
+        {/* GitHub link row */}
+        <div className={styles.githubRow}>
+          <a
+            href={GITHUB_PROFILE}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.githubLink}
+            aria-label="View all projects on GitHub"
+          >
+            View all on GitHub
+            <ExternalLink size={13} strokeWidth={1.5} aria-hidden="true" />
+          </a>
         </div>
-      </div>
-
-      {/* Signal Trace SVG — drawn between hovered card and tech panel */}
-      <SignalTrace
-        fromRef={fromRef}
-        toRef={toPanelRef}
-        isActive={hoveredProject !== null}
-      />
-
-      {/* GitHub link row */}
-      <div className={styles.githubRow}>
-        <a
-          href={GITHUB_PROFILE}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={styles.githubLink}
-          aria-label="View all projects on GitHub"
-        >
-          View all on GitHub
-          <ExternalLink size={13} strokeWidth={1.5} aria-hidden="true" />
-        </a>
-      </div>
+      </Container>
     </Section>
   );
 }
