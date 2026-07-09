@@ -41,6 +41,10 @@ Spacing: `--space-3-5` (14px, KC input padding), `--space-7` (28px, KC response 
 
 Parallax: `--parallax-headline` (0.3), `--parallax-portrait` (0.15)
 
+## Entry point wiring
+
+- `global.css`/`typography.css`/`animations.css` must be imported in `src/main.tsx` (not just referenced via `@import` inside global.css itself) — without this, the app renders with no design tokens at all despite CSS Modules resolving fine.
+
 ## Font setup
 
 - Self-hosted woff2 files don't exist yet — font preload `<link>` tags are commented out in `index.html`.
