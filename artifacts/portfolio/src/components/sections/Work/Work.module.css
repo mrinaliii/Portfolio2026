@@ -1,0 +1,92 @@
+.stamp {
+  margin-bottom: var(--space-6);
+}
+
+.heading {
+  font-family: var(--font-sans);
+  font-size: var(--text-heading);
+  font-weight: 700;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-text);
+  margin-bottom: var(--space-10);
+}
+
+/* ── Layout: cards + tech panel ───────────────────────────────────────────── */
+
+.layout {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-8);
+}
+
+/* ── 2-up card grid ───────────────────────────────────────────────────────── */
+
+.grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+
+/* ── GitHub link row ──────────────────────────────────────────────────────── */
+
+.githubRow {
+  margin-top: var(--space-8);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.githubLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-family: var(--font-sans);
+  font-size: var(--text-button-ghost);
+  font-weight: 500;
+  letter-spacing: var(--tracking-button-ghost);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 2px;
+  transition: color var(--duration-micro) var(--ease-out);
+}
+
+.githubLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-text);
+  transition: width var(--duration-standard) var(--ease-standard);
+}
+
+.githubLink:hover {
+  color: var(--color-text);
+}
+
+.githubLink:hover::after {
+  width: 100%;
+}
+
+/* ── Responsive ───────────────────────────────────────────────────────────── */
+
+@media (max-width: 1023px) {
+  .layout {
+    display: block;
+  }
+}
+
+@media (max-width: 767px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .heading {
+    font-size: var(--text-heading-sm);
+    letter-spacing: var(--tracking-heading-sm);
+  }
+}

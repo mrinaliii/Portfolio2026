@@ -1,0 +1,56 @@
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: var(--text-body-sm);
+  font-weight: 400;
+  line-height: var(--leading-body-sm);
+  letter-spacing: var(--tracking-body);
+  color: var(--color-text-secondary);
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-4);
+  cursor: pointer;
+  transition:
+    border-color var(--duration-micro) var(--ease-out),
+    color        var(--duration-micro) var(--ease-out);
+}
+
+.chip:hover:not(:disabled) {
+  border-color: var(--color-ice-signal-dim);
+  color: var(--color-text);
+}
+
+.chip:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Selected state */
+.chip.selected {
+  border-color: var(--color-ice-signal);
+  color: var(--color-text);
+}
+
+/* ○ dot prefix — fills on select */
+.dot {
+  font-family: var(--font-mono);
+  font-size: var(--text-stamp);
+  line-height: 1;
+  color: var(--color-text-muted);
+  transition: color var(--duration-micro) var(--ease-out);
+}
+
+.dotFilled {
+  color: var(--color-ice-signal);
+  /* DS: "fill animation on select" — opacity pulse on the dot */
+  animation: dotPulse 200ms var(--ease-out) both;
+}
+
+@keyframes dotPulse {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.4; }
+  100% { opacity: 1; }
+}

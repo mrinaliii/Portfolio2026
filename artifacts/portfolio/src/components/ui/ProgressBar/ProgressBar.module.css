@@ -1,0 +1,26 @@
+.bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--progress-bar-height);
+  z-index: var(--z-skip);
+  /* Shimmer: two-tone gradient sweeping left-to-right */
+  background: linear-gradient(
+    90deg,
+    var(--color-ice-signal)        0%,
+    var(--color-ice-signal-bright) 50%,
+    var(--color-ice-signal)       100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s linear infinite;
+  opacity: 1;
+  transition: opacity var(--duration-component) var(--ease-out);
+}
+
+.completing {
+  animation: none;
+  background: var(--color-ice-signal);
+  opacity: 0;
+  transition: opacity var(--duration-standard) var(--ease-out);
+}

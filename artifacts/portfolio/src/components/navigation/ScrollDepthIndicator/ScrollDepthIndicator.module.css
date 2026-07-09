@@ -1,0 +1,36 @@
+/* Hidden on mobile (< 768px — nav breakpoint) */
+@media (max-width: 767px) {
+  .track {
+    display: none;
+  }
+}
+
+.track {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--scroll-indicator-width);
+  z-index: var(--z-nav);
+  background-color: var(--color-border);
+  pointer-events: none;
+}
+
+.fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-ice-signal-dim);
+  transition: height 80ms linear;
+}
+
+/* Section markers — small notch on the right edge */
+.marker {
+  position: absolute;
+  right: 0;
+  width: var(--space-2);
+  height: 1px;
+  background-color: var(--color-ice-signal);
+  transform: translateY(-50%);
+}

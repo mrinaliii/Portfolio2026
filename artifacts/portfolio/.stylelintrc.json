@@ -43,7 +43,12 @@
     "keyframes-name-pattern": null,
     "alpha-value-notation": "number",
     "color-function-notation": "legacy",
-    "import-notation": "string"
+    "import-notation": "string",
+
+    "media-feature-range-notation": null,
+    "property-no-vendor-prefix": null,
+    "no-duplicate-selectors": null,
+    "declaration-block-single-line-max-declarations": null
   },
   "overrides": [
     {

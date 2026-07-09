@@ -1,4 +1,8 @@
-.placeholder {
-  padding-top: var(--nav-height);
-  min-height: 100dvh;
+.page {
+  min-height: 100vh;
+}
+
+/* All prose sections container — no extra padding; each CaseStudySection handles its own */
+.sections {
+  /* Stack of sections — each has its own border-bottom hairline */
 }

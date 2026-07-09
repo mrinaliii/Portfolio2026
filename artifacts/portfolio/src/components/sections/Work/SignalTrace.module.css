@@ -1,0 +1,26 @@
+/* Full-viewport fixed SVG — pointer-events: none so it doesn't intercept clicks */
+.svg {
+  pointer-events: none;
+  z-index: var(--z-raised);
+  opacity: 0;
+  transition: opacity var(--duration-standard) var(--ease-out);
+}
+
+.svg.active {
+  opacity: 1;
+}
+
+/* Signal Trace line — DS Section 10b: 1px, --color-ice-signal-dim, opacity 0.4 */
+.line {
+  stroke: var(--color-ice-signal-dim);
+  stroke-width: 1;
+  opacity: var(--opacity-signal-trace); /* 0.4 from tokens */
+  stroke-dasharray: 4 4;
+}
+
+/* Hidden on mobile/tablet */
+@media (max-width: 1023px) {
+  .svg {
+    display: none;
+  }
+}

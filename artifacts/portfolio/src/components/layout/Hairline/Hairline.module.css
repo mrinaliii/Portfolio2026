@@ -1,0 +1,5 @@
+.hairline {
+  border: none;
+  border-top: var(--hairline-width) solid var(--color-border);
+  margin: 0;
+}

@@ -1,0 +1,10 @@
+.stamp {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: var(--text-stamp);
+  font-weight: 500;
+  line-height: var(--leading-stamp);
+  letter-spacing: var(--tracking-stamp);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}

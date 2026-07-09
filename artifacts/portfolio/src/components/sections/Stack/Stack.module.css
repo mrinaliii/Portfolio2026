@@ -1,0 +1,36 @@
+.stamp {
+  margin-bottom: var(--space-6);
+}
+
+.heading {
+  font-family: var(--font-sans);
+  font-size: var(--text-heading);
+  font-weight: 700;
+  line-height: var(--leading-heading);
+  letter-spacing: var(--tracking-heading);
+  color: var(--color-text);
+  margin-bottom: var(--space-12);
+}
+
+/* Current Focus — ice-signal is the one accent in this section (DS Section 05) */
+.currentFocus {
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  font-weight: 400;
+  line-height: var(--leading-caption);
+  letter-spacing: var(--tracking-caption);
+  color: var(--color-text-muted);
+  margin-top: var(--space-12);
+}
+
+.focusTopic {
+  color: var(--color-ice-signal);
+}
+
+@media (max-width: 639px) {
+  .heading {
+    font-size: var(--text-heading-sm);
+    letter-spacing: var(--tracking-heading-sm);
+    margin-bottom: var(--space-8);
+  }
+}

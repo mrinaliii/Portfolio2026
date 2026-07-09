@@ -1,0 +1,119 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  background-color: var(--color-overlay);
+}
+
+.panel {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-drawer);
+  background-color: var(--color-canvas);
+  padding: var(--space-6) var(--side-margin-mobile);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── Panel header ─────────────────────────────────────────────────────────── */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--nav-height);
+  margin-bottom: var(--space-12);
+}
+
+.monogram {
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-sm);
+  transition: color var(--duration-micro) var(--ease-out);
+}
+
+.closeBtn:hover {
+  color: var(--color-text);
+}
+
+/* ── Nav links ────────────────────────────────────────────────────────────── */
+
+.links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex: 1;
+}
+
+.item {
+  overflow: hidden;
+}
+
+.link {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: var(--text-mobile-nav);
+  font-weight: 700;
+  color: var(--color-text-secondary);
+  line-height: var(--leading-heading-sm);
+  letter-spacing: var(--tracking-heading-sm);
+  text-decoration: none;
+  padding-block: var(--space-3);
+  transition: color var(--duration-micro) var(--ease-out);
+  /* Staggered entrance via CSS custom property set as inline style by component */
+  animation: fadeDown var(--duration-component) var(--ease-entrance) var(--item-delay, 0ms) both;
+}
+
+.link:hover,
+.linkActive {
+  color: var(--color-text);
+}
+
+/* ── Footer (Resume) ──────────────────────────────────────────────────────── */
+
+.footer {
+  padding-top: var(--space-8);
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--space-8);
+}
+
+.resumeLink {
+  display: block;
+  width: 100%;
+  font-family: var(--font-sans);
+  font-size: var(--text-mobile-nav);
+  font-weight: 700;
+  color: var(--color-ice-signal);
+  line-height: var(--leading-heading-sm);
+  letter-spacing: var(--tracking-heading-sm);
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding-block: var(--space-3);
+  animation: fadeDown var(--duration-component) var(--ease-entrance) var(--item-delay, 0ms) both;
+  transition: color var(--duration-micro) var(--ease-out);
+}
+
+.resumeLink:hover {
+  color: var(--color-ice-signal-bright);
+}

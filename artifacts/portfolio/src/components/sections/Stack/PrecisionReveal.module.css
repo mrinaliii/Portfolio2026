@@ -1,0 +1,63 @@
+.groups {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-12);
+}
+
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.groupLabel {
+  font-family: var(--font-mono);
+  font-size: var(--text-stamp);
+  font-weight: 500;
+  line-height: var(--leading-stamp);
+  letter-spacing: var(--tracking-stamp);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  display: block;
+  margin-bottom: var(--space-2);
+}
+
+.tokens {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+/* Precision Reveal token states — no transition duration; tokens "pop" in (DS spec) */
+.token {
+  /* Start invisible */
+}
+
+.tokenHidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tokenVisible {
+  opacity: 1;
+  /* No transition — instant appearance is the design intent (DS Section 10b) */
+}
+
+/* Reduced-motion: fade in all together */
+.tokensReduced .tokenReduced {
+  transition: opacity var(--duration-entrance) var(--ease-entrance);
+}
+
+@media (max-width: 1023px) {
+  .groups {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-8);
+  }
+}
+
+@media (max-width: 479px) {
+  .groups {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+}

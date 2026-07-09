@@ -1,0 +1,18 @@
+/* Section background pulse — once, not looping (DS Section 06) */
+.glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 800px 500px at 50% 50%,
+    var(--color-glow-ambient-peak),
+    transparent
+  );
+  pointer-events: none;
+  animation: glowPulse 1.5s var(--ease-entrance) forwards;
+}
+
+@keyframes glowPulse {
+  0%   { opacity: 0; }
+  40%  { opacity: 1; }
+  100% { opacity: 0; }
+}

@@ -1,0 +1,48 @@
+/* Fixed right-side panel, 240px wide (DS Section 03) */
+.panel {
+  width: 240px;
+  flex-shrink: 0;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-base);
+  padding: var(--space-6);
+  align-self: flex-start;
+  /* Sticky within the card grid's natural scroll */
+  position: sticky;
+  top: calc(var(--nav-height) + var(--space-8));
+}
+
+.stamp {
+  margin-bottom: var(--space-3);
+}
+
+.projectName {
+  font-family: var(--font-sans);
+  font-size: var(--text-body-sm);
+  font-weight: 700;
+  line-height: var(--leading-body-sm);
+  letter-spacing: var(--tracking-body);
+  color: var(--color-text);
+  margin-bottom: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-3);
+}
+
+.tags {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.tag {
+  /* Full width in the panel list */
+  display: block;
+  width: 100%;
+}
+
+/* Hidden on mobile — accordion used instead */
+@media (max-width: 1023px) {
+  .panel {
+    display: none;
+  }
+}

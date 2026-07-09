@@ -1,0 +1,231 @@
+/* =============================================================================
+   Hero — DS Section 10a, IA Section 01
+   All values from tokens.css unless noted.
+   ============================================================================= */
+
+/* ── Section shell ────────────────────────────────────────────────────────── */
+
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  scroll-margin-top: var(--nav-height);
+}
+
+/* ── Ambient layer ────────────────────────────────────────────────────────── */
+
+.ambient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: var(--z-base);
+}
+
+/* Radial glow — DS Section 10a: exactly this gradient, off-center */
+.radialGlow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 900px 600px at 25% 60%,
+    var(--color-glow-ambient-peak),
+    transparent
+  );
+}
+
+/* ── Container override — vertical padding ────────────────────────────────── */
+
+.container {
+  position: relative;
+  z-index: var(--z-raised);
+  width: 100%;
+  padding-top: calc(var(--nav-height) + var(--space-16));
+  padding-bottom: var(--space-16);
+}
+
+/* ── Hero grid ────────────────────────────────────────────────────────────── */
+
+/* Desktop: 12-column grid; text cols 1-7, portrait cols 9-12 */
+.heroGrid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(5, auto);
+  gap: var(--col-gutter-desktop);
+  align-items: start;
+}
+
+/* ── Stamp — element 2 (200ms / 500ms / fadeUp) ──────────────────────────── */
+
+.stamp {
+  grid-column: 1 / 8;
+  grid-row: 1;
+  animation: fadeUp var(--duration-entrance) var(--ease-entrance) 200ms both;
+  margin-bottom: var(--space-4);
+}
+
+/* ── Name — element 3 (350ms / 700ms / fadeUp) ───────────────────────────── */
+
+.name {
+  grid-column: 1 / 8;
+  grid-row: 2;
+  font-family: var(--font-sans);
+  font-size: var(--text-hero);
+  font-weight: 700;
+  line-height: var(--leading-hero);
+  letter-spacing: var(--tracking-hero);
+  color: var(--color-text);
+  /* Entrance */
+  animation: fadeUp 700ms var(--ease-entrance) 350ms both;
+  /* Parallax — CSS `translate` composes with animation's `transform` */
+  translate: 0 var(--parallax-y, 0);
+}
+
+/* ── Descriptor — element 4 (450ms / 700ms / fadeUp) ─────────────────────── */
+
+.descriptor {
+  grid-column: 1 / 8;
+  grid-row: 3;
+  font-family: var(--font-sans);
+  font-size: var(--text-heading-sm);
+  font-weight: 400;
+  line-height: var(--leading-heading-sm);
+  letter-spacing: var(--tracking-heading-sm);
+  color: var(--color-text-secondary);
+  /* Entrance */
+  animation: fadeUp 700ms var(--ease-entrance) 450ms both;
+  /* Parallax */
+  translate: 0 var(--parallax-y, 0);
+  margin-top: var(--space-3);
+}
+
+/* ── Portrait — element 7 (900ms / 500ms / fadeIn — opacity only) ─────────── */
+
+.portraitColumn {
+  grid-column: 9 / 13;
+  grid-row: 1 / 6;
+  align-self: center;
+  /* Entrance — opacity-only, no translate (DS spec: "arrives like stepping into frame") */
+  animation: fadeIn var(--duration-entrance) var(--ease-entrance) 900ms both;
+  /* Parallax */
+  translate: 0 var(--parallax-y, 0);
+}
+
+.portrait {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-base);
+  overflow: hidden;
+  /* Portrait is secondary to the typography — no hover effects */
+}
+
+/* ── Subtext — element 5 (600ms / 500ms / fadeIn) ────────────────────────── */
+
+.subtext {
+  grid-column: 1 / 8;
+  grid-row: 4;
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  font-weight: 400;
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
+  color: var(--color-text-secondary);
+  max-width: 520px;
+  margin-top: var(--space-6);
+  animation: fadeIn var(--duration-entrance) var(--ease-entrance) 600ms both;
+}
+
+/* ── CTA row — element 6 (750ms / 400ms / fadeIn) ────────────────────────── */
+
+.ctaRow {
+  grid-column: 1 / 8;
+  grid-row: 5;
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  margin-top: var(--space-8);
+  animation: fadeIn 400ms var(--ease-entrance) 750ms both;
+}
+
+/* =============================================================================
+   RESPONSIVE
+   ============================================================================= */
+
+/* Tablet (640–1023px) — single column, portrait centered between descriptor and subtext */
+@media (max-width: 1023px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+    gap: 0;
+    row-gap: var(--space-4);
+  }
+
+  /* Explicit grid-row placement for mobile/tablet order:
+     stamp(1) → name(2) → descriptor(3) → portrait(4) → subtext(5) → ctas(6) */
+  .stamp          { grid-column: 1; grid-row: 1; }
+  .name           { grid-column: 1; grid-row: 2; }
+  .descriptor     { grid-column: 1; grid-row: 3; }
+  .portraitColumn { grid-column: 1; grid-row: 4; margin-block: var(--space-8); }
+  .subtext        { grid-column: 1; grid-row: 5; margin-top: 0; }
+  .ctaRow         { grid-column: 1; grid-row: 6; }
+
+  /* Disable parallax on tablet/mobile (CSS translate fallback to 0 is correct) */
+  .name, .descriptor, .portraitColumn {
+    translate: 0 0;
+  }
+
+  /* Portrait: 60% width, centered */
+  .portraitColumn {
+    width: 60%;
+    margin-inline: auto;
+  }
+
+  /* Name: --text-hero-tablet (72px) */
+  .name {
+    font-size: var(--text-hero-tablet);
+    letter-spacing: var(--tracking-display);
+    line-height: var(--leading-display);
+  }
+}
+
+/* Mobile (<640px) */
+@media (max-width: 639px) {
+  .container {
+    padding-top: calc(var(--nav-height) + var(--space-10));
+    padding-bottom: var(--space-10);
+  }
+
+  /* Portrait: 64% viewport width (IA spec) */
+  .portraitColumn {
+    width: 64vw;
+  }
+
+  /* Name: 52px mobile (IA Section 01 spec — overrides token --text-hero-mobile: 48px) */
+  .name {
+    font-size: 52px;
+    letter-spacing: var(--tracking-heading);
+    line-height: var(--leading-heading);
+  }
+
+  /* Descriptor: 22px mobile (IA spec) */
+  .descriptor {
+    font-size: 22px;
+    letter-spacing: var(--tracking-subheading);
+  }
+
+  .ctaRow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-4);
+  }
+
+  .subtext {
+    font-size: var(--text-body-sm);
+  }
+}
+
+/* Wide screens — cap hero name from overflowing */
+@media (min-width: 1280px) {
+  .name {
+    font-size: clamp(var(--text-heading-lg), 8vw, var(--text-hero));
+  }
+}

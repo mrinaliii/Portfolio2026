@@ -1,64 +1,45 @@
-import { Suspense, lazy, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import { ThemeProvider } from '@/context/ThemeContext';
-import { DrawerProvider } from '@/context/DrawerContext';
-import { ProgressProvider } from '@/context/ProgressContext';
-import { SkipLink } from '@/components/ui/SkipLink/SkipLink';
+import { DrawerProvider } from './context/DrawerContext';
+import { ProgressProvider } from './context/ProgressContext';
+import { ThemeProvider } from './context/ThemeContext';
+import { ProgressBar } from './components/ui/ProgressBar/ProgressBar';
+import { SkipLink } from './components/ui/SkipLink/SkipLink';
+import { ResumeDrawer } from './components/resume-drawer/ResumeDrawer';
 
-import '@/styles/global.css';
-import '@/styles/typography.css';
-import '@/styles/animations.css';
-
-// Route-level code splitting — each page is its own JS chunk
-const HomePage = lazy(() =>
-  import('@/pages/HomePage').then((m) => ({ default: m.HomePage })),
-);
-const CaseStudyPage = lazy(() =>
-  import('@/pages/CaseStudyPage').then((m) => ({ default: m.CaseStudyPage })),
-);
+const HomePage = lazy(() => import('./pages/HomePage'));
+const CaseStudyPage = lazy(() => import('./pages/CaseStudyPage'));
 
 /**
- * PageviewTracker — fires a Plausible virtual pageview on every route change.
- * Placed inside BrowserRouter so it has access to useLocation().
+ * Application root.
+ * Provider order (outer → inner):
+ *   HelmetProvider → ThemeProvider → DrawerProvider → ProgressProvider → Router
+ *
+ * ProgressBar: NProgress-style top bar, reads ProgressContext.
+ * SkipLink: first focusable element — jumps to #main-content.
+ * ResumeDrawer: globally mounted; toggled by DrawerContext.openDrawer().
  */
-function PageviewTracker() {
-  const location = useLocation();
-
-  useEffect(() => {
-    if (
-      typeof window !== 'undefined' &&
-      typeof window.plausible === 'function'
-    ) {
-      window.plausible('pageview');
-    }
-  }, [location.pathname]);
-
-  return null;
-}
-
-export function App() {
+export default function App() {
   return (
     <HelmetProvider>
       <ThemeProvider>
         <DrawerProvider>
           <ProgressProvider>
-            <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-              {/* Accessibility: always the first Tab stop */}
+            <BrowserRouter
+              future={{
+                v7_startTransition: true,
+                v7_relativeSplatPath: true,
+              }}
+            >
               <SkipLink />
-
-              {/* SPA pageview tracking */}
-              <PageviewTracker />
-
+              <ProgressBar />
+              {/* Resume drawer — globally mounted above all page content */}
+              <ResumeDrawer />
               <Suspense fallback={null}>
                 <Routes>
                   <Route path="/" element={<HomePage />} />
-                  <Route
-                    path="/work/:projectSlug"
-                    element={<CaseStudyPage />}
-                  />
-                  {/* 404 → home */}
-                  <Route path="*" element={<Navigate to="/" replace />} />
+                  <Route path="/work/:projectSlug" element={<CaseStudyPage />} />
                 </Routes>
               </Suspense>
             </BrowserRouter>

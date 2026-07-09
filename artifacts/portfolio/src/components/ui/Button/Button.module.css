@@ -1,0 +1,100 @@
+/* Button — DS Section 16
+   Padding token exceptions:
+   - --button-primary-padding-y (10px = 2.5×4) and --button-secondary-padding-y (9px = 2.25×4)
+     are DS-specified values that sit between grid steps; defined in tokens.css.
+   - The border-width of 1px (secondary) and the 1px underline (ghost) are structural
+     CSS values, not spacing decisions — kept as literals per the engineering spec.
+   - scale(0.97) on :active is an animation multiplier, not a spacing token. */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  font-family: var(--font-sans);
+  line-height: 1;
+  white-space: nowrap;
+  text-decoration: none;
+  border: none;
+  transition:
+    background-color var(--duration-micro) var(--ease-out),
+    border-color     var(--duration-micro) var(--ease-out),
+    color            var(--duration-micro) var(--ease-out),
+    transform        80ms               var(--ease-out);
+}
+
+.button:active {
+  transform: scale(0.97);
+}
+
+.button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ── Primary ──────────────────────────────────────────────────────────────── */
+
+.primary {
+  background-color: var(--color-ice-signal);
+  color: var(--color-void);
+  font-size: var(--text-body-sm);
+  font-weight: 500;
+  padding: var(--button-primary-padding-y) var(--space-5);
+  border-radius: var(--radius-sm);
+}
+
+.primary:hover:not(:disabled) {
+  background-color: var(--color-ice-signal-bright);
+}
+
+/* ── Secondary (outlined) ─────────────────────────────────────────────────── */
+
+.secondary {
+  background-color: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-border-strong);
+  font-size: var(--text-body-sm);
+  font-weight: 400;
+  padding: var(--button-secondary-padding-y) var(--button-secondary-padding-x);
+  border-radius: var(--radius-sm);
+}
+
+.secondary:hover:not(:disabled) {
+  border-color: var(--color-ice-signal-dim);
+}
+
+/* ── Ghost (text + animated underline) ────────────────────────────────────── */
+
+.ghost {
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  border: none;
+  font-size: var(--text-button-ghost);
+  font-weight: 500;
+  letter-spacing: var(--tracking-button-ghost);
+  text-transform: uppercase;
+  padding: var(--space-1) 0;
+  border-radius: 0;
+  position: relative;
+}
+
+/* Animated underline */
+.ghost::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-text-secondary);
+  transition: width var(--duration-standard) var(--ease-standard);
+}
+
+.ghost:hover:not(:disabled) {
+  color: var(--color-text);
+}
+
+.ghost:hover:not(:disabled)::after {
+  width: 100%;
+}

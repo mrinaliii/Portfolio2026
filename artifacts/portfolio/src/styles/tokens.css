@@ -120,6 +120,17 @@
   --input-padding-y:      var(--space-3-5);   /* 14px — KC search input */
   --input-icon-clearance: 44px;               /* LC search icon + gap clearance */
 
+  /* Button-specific padding — DS-specified values between 4px grid steps */
+  --button-primary-padding-y:    10px;   /* 2.5 × 4px — DS Section 16 */
+  --button-secondary-padding-y:   9px;   /* 2.25 × 4px — DS Section 16 */
+  --button-secondary-padding-x:  18px;   /* 4.5 × 4px — DS Section 16 */
+
+  /* ProgressBar */
+  --progress-bar-height: 2px;   /* NProgress-style top bar */
+
+  /* Hairline separator */
+  --hairline-width: 1px;   /* Structural CSS constant — not on 4px grid by design */
+
   /* ===========================================================================
      4. BORDER RADIUS — Two values only, no exceptions.
      Never use 9999px (pill), never use 0 except full-bleed dividers.

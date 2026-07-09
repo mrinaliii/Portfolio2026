@@ -1,0 +1,117 @@
+.block {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-base);
+  padding: var(--space-7);
+  background-color: var(--color-surface);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+/* Loading skeleton rows */
+.loading {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* Answer text — streaming character-by-character */
+.answer {
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  font-weight: 400;
+  line-height: var(--leading-body);
+  letter-spacing: var(--tracking-body);
+  color: var(--color-text);
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  word-break: break-word; /* stylelint-disable-line declaration-property-value-keyword-no-deprecated */
+}
+
+/* Blinking cursor during streaming */
+.cursor {
+  animation: blink 600ms step-end infinite;
+  color: var(--color-ice-signal);
+  font-size: 0.8em;
+  vertical-align: baseline;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ── Post-streaming reveals ───────────────────────────────────────────────── */
+
+/* Citations */
+.citations {
+  font-family: var(--font-mono);
+  font-size: var(--text-stamp);
+  color: var(--color-text-muted);
+  letter-spacing: var(--tracking-caption);
+  animation: fadeIn var(--duration-entrance) var(--ease-entrance) both;
+}
+
+.citationLabel {
+  color: var(--color-text-muted);
+}
+
+.citationLink {
+  color: var(--color-ice-signal-dim);
+  text-decoration: none;
+  transition: color var(--duration-micro) var(--ease-out);
+}
+
+.citationLink:hover {
+  color: var(--color-ice-signal);
+}
+
+.citationText {
+  color: var(--color-text-muted);
+}
+
+.citationSeparator {
+  color: var(--color-text-muted);
+}
+
+/* Related project links */
+.relatedProjects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  animation: fadeIn var(--duration-entrance) var(--ease-entrance) 200ms both;
+}
+
+.relatedLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-family: var(--font-sans);
+  font-size: var(--text-body-sm);
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color var(--duration-micro) var(--ease-out);
+}
+
+.relatedLink:hover {
+  color: var(--color-ice-signal);
+}
+
+/* Follow-up chips */
+.followUps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--color-border);
+  animation: fadeIn var(--duration-entrance) var(--ease-entrance) 400ms both;
+}
+
+/* Error state */
+.error {
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  color: var(--color-text-secondary);
+  font-style: italic;
+}
