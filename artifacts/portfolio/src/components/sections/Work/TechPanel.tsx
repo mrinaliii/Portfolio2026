@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { Tag } from '../../ui/Tag/Tag';
 import { StampLabel } from '../../ui/StampLabel/StampLabel';
-import type { Project } from '../../../data/projects';
+import type { Project } from 'virtual:projects';
 import styles from './TechPanel.module.css';
 
 interface TechPanelProps {

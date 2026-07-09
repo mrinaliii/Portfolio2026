@@ -5,8 +5,8 @@ import { StampLabel } from '../../ui/StampLabel/StampLabel';
 import { ProjectCard } from './ProjectCard';
 import { TechPanel } from './TechPanel';
 import { SignalTrace } from './SignalTrace';
-import { PROJECTS } from '../../../data/projects';
-import type { Project } from '../../../data/projects';
+import { PROJECTS } from 'virtual:projects';
+import type { Project } from 'virtual:projects';
 import styles from './Work.module.css';
 
 const GITHUB_PROFILE = 'https://github.com/mrinali-charhate';

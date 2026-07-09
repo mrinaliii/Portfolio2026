@@ -2,7 +2,7 @@ import { ExternalLink, Github } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '../ui/Button/Button';
 import { analytics } from '../../lib/analytics';
-import type { Project } from '../../data/projects';
+import type { Project } from 'virtual:projects';
 import styles from './LinksSection.module.css';
 
 interface LinksSectionProps {

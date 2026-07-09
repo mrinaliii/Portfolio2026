@@ -26,10 +26,10 @@
   animation: fadeUp var(--duration-entrance) var(--ease-entrance) var(--stagger-delay, 0ms) both;
 }
 
-/* Label — illuminated stamp (IA: labels are "illuminated" against body copy) */
+/* Label — illuminated stamp (IA §04: labels in --color-starlight; body copy in --color-steel/secondary) */
 .principleLabel {
   display: block;
-  color: var(--color-ice-signal);
+  color: var(--color-starlight);
   margin-bottom: var(--space-4);
 }
 

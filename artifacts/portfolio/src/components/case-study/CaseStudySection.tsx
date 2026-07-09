@@ -1,6 +1,6 @@
 import { StampLabel } from '../ui/StampLabel/StampLabel';
 import { useReadingDepth } from '../../hooks/useReadingDepth';
-import type { CaseStudySection as CaseStudySectionType } from '../../data/projects';
+import type { CaseStudySection as CaseStudySectionType } from 'virtual:projects';
 import styles from './CaseStudySection.module.css';
 
 interface CaseStudySectionProps {

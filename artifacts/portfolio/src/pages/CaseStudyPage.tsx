@@ -5,7 +5,8 @@ import { CaseStudyHero } from '../components/case-study/CaseStudyHero';
 import { CaseStudySection } from '../components/case-study/CaseStudySection';
 import { LinksSection } from '../components/case-study/LinksSection';
 import { Footer } from '../components/sections/Footer/Footer';
-import { PROJECT_MAP } from '../data/projects';
+import { PROJECT_MAP } from 'virtual:projects';
+import type { CaseStudySection as CaseStudySectionType } from 'virtual:projects';
 import styles from './CaseStudyPage.module.css';
 
 /**
@@ -44,7 +45,7 @@ export default function CaseStudyPage() {
 
         {/* All case study sections from project data */}
         <div className={styles.sections}>
-          {project.caseStudySections.map((section: import('../data/projects').CaseStudySection, index: number) => (
+          {project.caseStudySections.map((section: CaseStudySectionType, index: number) => (
             <CaseStudySection
               key={section.label}
               section={section}

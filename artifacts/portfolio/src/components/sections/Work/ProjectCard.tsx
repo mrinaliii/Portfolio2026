@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { StampLabel } from '../../ui/StampLabel/StampLabel';
 import { Tag } from '../../ui/Tag/Tag';
-import type { Project } from '../../../data/projects';
+import type { Project } from 'virtual:projects';
 import styles from './ProjectCard.module.css';
 
 interface ProjectCardProps {

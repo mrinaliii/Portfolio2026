@@ -1,6 +1,6 @@
 import { StampLabel } from '../ui/StampLabel/StampLabel';
 import { Tag } from '../ui/Tag/Tag';
-import type { Project } from '../../data/projects';
+import type { Project } from 'virtual:projects';
 import styles from './CaseStudyHero.module.css';
 
 interface CaseStudyHeroProps {

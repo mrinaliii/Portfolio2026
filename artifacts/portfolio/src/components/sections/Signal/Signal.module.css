@@ -1,6 +1,16 @@
+/* Signal section — 7-column left rail on desktop, full-width on mobile (IA Section 02) */
 .inner {
-  /* 7-column left rail — deliberate asymmetry (IA Section 02) */
-  max-width: 640px;
+  /* Desktop: 7-of-12 columns — deliberate asymmetry, right 5 columns intentionally empty.
+     Container max is 1120px with 32px gutters. 7/12 of the inner track, preserving the
+     12-col grid proportions. calc() with CSS custom properties is spec-compliant. */
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .inner {
+    /* 7/12 of the 12-column grid width within the container */
+    max-width: calc((var(--container-max) - (var(--side-margin-desktop) * 2) + var(--col-gutter-desktop)) * 7 / 12 - var(--col-gutter-desktop));
+  }
 }
 
 .stamp {
