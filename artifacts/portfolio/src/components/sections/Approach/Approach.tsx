@@ -4,61 +4,71 @@ import { StampLabel } from '../../ui/StampLabel/StampLabel';
 import { Hairline } from '../../layout/Hairline/Hairline';
 import styles from './Approach.module.css';
 
-interface Principle {
+interface Role {
   label: string;
   heading: string;
-  body: string;
+  meta: string;
+  body: string[];
 }
 
-const PRINCIPLES: Principle[] = [
+const ROLES: Role[] = [
   {
-    label: 'UNDERSTAND FIRST',
-    heading: 'Problem Before Solution',
-    body: 'Before writing code, I focus on understanding the problem, its constraints, and the trade-offs involved. A solution built on a misunderstood problem is a liability — no matter how cleanly it is engineered.',
+    label: '2026',
+    heading: 'Cybersecurity Intern — Abhita Aerospace',
+    meta: 'Mumbai, Maharashtra · May 2026 – July 2026',
+    body: [
+      'Performed vulnerability assessments across web applications and networks.',
+      'Conducted web application security testing and network security analysis.',
+      'Supported security monitoring and documented findings for remediation.',
+    ],
   },
   {
-    label: 'BUILD WITH PURPOSE',
-    heading: 'Clarity Over Cleverness',
-    body: 'I prefer solutions that are reliable, maintainable, and thoughtfully designed rather than unnecessarily complex. The most impressive code is often the simplest code that correctly solves the right problem.',
-  },
-  {
-    label: 'KEEP LEARNING',
-    heading: 'Iteration Is the Method',
-    body: 'Technology evolves constantly. I enjoy exploring new tools, reading documentation, experimenting with ideas, and improving every project through iteration. Every project leaves me more capable than before.',
+    label: '2025',
+    heading: 'AI-ML Intern — Reliance New Energy',
+    meta: 'Mumbai, Maharashtra · June 2025',
+    body: [
+      'Collaborated with teams to refine requirements for energy data systems.',
+      'Built and evaluated hybrid retrieval models for accurate domain-specific queries.',
+      'Delivered insights through dashboards and demos to support data-driven decision-making.',
+    ],
   },
 ];
 
 /**
- * Section 04 — Approach.
- * How I think. Principles, not skills.
- * 2-up principle block grid on desktop, 1-up on mobile.
+ * Section 04 — Experience.
+ * Work experience and patents. Formerly "Approach"; repurposed per request.
+ * 2-up block grid on desktop, 1-up on mobile.
  * Children stagger at 80ms (handled by Section with staggered CSS delay classes).
  * Hairline separator below.
- * IA Section 04, CONTENT.md §APPROACH.
  */
 export function Approach() {
   return (
     <>
-      <Section id="approach" data-section="approach" aria-labelledby="approach-heading">
+      <Section id="experience" data-section="experience" aria-labelledby="experience-heading">
         <Container>
-          <StampLabel className={styles.stamp}>Approach</StampLabel>
+          <StampLabel className={styles.stamp}>Experience</StampLabel>
 
-          <h2 id="approach-heading" className={styles.heading}>
-            How I Think
+          <h2 id="experience-heading" className={styles.heading}>
+            Where I've Worked
           </h2>
 
           <div className={styles.grid}>
-            {PRINCIPLES.map((principle, i) => (
+            {ROLES.map((role, i) => (
               <article
-                key={principle.label}
+                key={role.heading}
                 className={styles.block}
                 style={{ '--stagger-delay': `${i * 80}ms` } as React.CSSProperties}
               >
                 <StampLabel className={styles.principleLabel}>
-                  {principle.label}
+                  {role.label}
                 </StampLabel>
-                <h3 className={styles.principleHeading}>{principle.heading}</h3>
-                <p className={styles.principleBody}>{principle.body}</p>
+                <h3 className={styles.principleHeading}>{role.heading}</h3>
+                <p className={styles.roleMeta}>{role.meta}</p>
+                <ul className={styles.roleBody}>
+                  {role.body.map((line) => (
+                    <li key={line}>{line}</li>
+                  ))}
+                </ul>
               </article>
             ))}
           </div>

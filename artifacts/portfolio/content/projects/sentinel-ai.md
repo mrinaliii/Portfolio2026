@@ -9,23 +9,18 @@ shortDescription: An intelligent Security Operations platform combining large la
 description: An intelligent Security Operations platform that combines large language models with modern SIEM technologies to assist analysts in threat investigation, alert analysis, and MITRE ATT&CK mapping.
 duration: 3 months
 role: Solo Engineer
+coverSrc: /projects/sentinel-ai/cover.jpg
 technologies:
-  - name: LangChain
-    tooltip: LLM orchestration framework for building AI pipelines
-  - name: OpenAI API
-    tooltip: GPT-4o-mini for threat analysis and reasoning
-  - name: Splunk
-    tooltip: Security information and event management (SIEM)
-  - name: Elasticsearch
-    tooltip: Full-text search and log analytics
-  - name: Wazuh
-    tooltip: Open-source SIEM and XDR platform
-  - name: "MITRE ATT&CK"
-    tooltip: Adversarial tactics and techniques knowledge base
-  - name: React
-    tooltip: Frontend dashboard
+  - name: Python
+    tooltip: Primary language
+  - name: PyTorch
+    tooltip: Deep learning framework used for model fine-tuning
+  - name: "Hugging Face Transformers"
+    tooltip: DistilBERT-based classification for alert triage
   - name: FastAPI
-    tooltip: High-performance Python API backend
+    tooltip: High-performance async Python API server
+  - name: Regex
+    tooltip: Pattern-based rules for structured log and alert parsing
 ---
 
 ## PROJECT OVERVIEW — The Problem With Alert Fatigue

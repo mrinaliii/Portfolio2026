@@ -1,5 +1,6 @@
 import { Hairline } from '../../layout/Hairline/Hairline';
 import { Section } from '../../layout/Section/Section';
+import { Container } from '../../layout/Container/Container';
 import { StampLabel } from '../../ui/StampLabel/StampLabel';
 import { useReadingDepth } from '../../../hooks/useReadingDepth';
 import styles from './Signal.module.css';
@@ -18,33 +19,35 @@ export function Signal() {
   return (
     <>
       <Section id="signal" data-section="signal" aria-labelledby="signal-heading">
-        <div className={styles.inner}>
-          <StampLabel className={styles.stamp}>Signal</StampLabel>
+        <Container>
+          <div className={styles.inner}>
+            <StampLabel className={styles.stamp}>Signal</StampLabel>
 
-          <h2 id="signal-heading" className={styles.heading}>
-            Why I Build
-          </h2>
+            <h2 id="signal-heading" className={styles.heading}>
+              Why I Build
+            </h2>
 
-          <div className={styles.body} ref={bodyRef}>
-            <p>
-              Technology fascinates me because every system tells a story.
-            </p>
-            <p>
-              Artificial Intelligence teaches machines to reason. Cybersecurity teaches us how systems
-              fail. Software Engineering connects both through thoughtful design and careful
-              implementation.
-            </p>
-            <p>
-              That's why I enjoy building at the intersection of these disciplines — creating
-              intelligent systems that are not only technically sound, but genuinely useful.
-            </p>
-            <p>
-              I don't believe good engineering is just about writing code. It's about understanding
-              problems deeply, making deliberate decisions, and continuously improving with every
-              iteration.
-            </p>
+            <div className={styles.body} ref={bodyRef}>
+              <p>
+                Technology fascinates me because every system tells a story.
+              </p>
+              <p>
+                Artificial Intelligence teaches machines to reason. Cybersecurity teaches us how systems
+                fail. Software Engineering connects both through thoughtful design and careful
+                implementation.
+              </p>
+              <p>
+                That's why I enjoy building at the intersection of these disciplines — creating
+                intelligent systems that are not only technically sound, but genuinely useful.
+              </p>
+              <p>
+                I don't believe good engineering is just about writing code. It's about understanding
+                problems deeply, making deliberate decisions, and continuously improving with every
+                iteration.
+              </p>
+            </div>
           </div>
-        </div>
+        </Container>
       </Section>
       <Hairline />
     </>

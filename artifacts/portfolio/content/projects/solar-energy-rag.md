@@ -9,19 +9,18 @@ shortDescription: A semantic document retrieval system enabling natural language
 description: Built a semantic document retrieval system that enables natural language interaction with structured solar energy reports using LangChain, vector embeddings, and modern language models.
 duration: 2 months
 role: Solo Engineer
+coverSrc: /projects/solar-energy-rag/cover.jpg
 technologies:
-  - name: LangChain
-    tooltip: Orchestration for the RAG pipeline
-  - name: Vector Search
-    tooltip: Semantic similarity search over embeddings
-  - name: Streamlit
-    tooltip: Interactive Python web app framework
-  - name: OpenAI API
-    tooltip: Embeddings and completion model
-  - name: FAISS
-    tooltip: Facebook AI Similarity Search — vector index
   - name: Python
     tooltip: Primary language
+  - name: LangChain
+    tooltip: Orchestration for the RAG pipeline
+  - name: ChromaDB
+    tooltip: Vector database for embedding storage and retrieval
+  - name: "Hugging Face Embeddings"
+    tooltip: Embedding models used to vectorize document chunks
+  - name: Ollama
+    tooltip: Local LLM runtime for on-device inference
 ---
 
 ## PROJECT OVERVIEW — Making Structured Reports Queryable

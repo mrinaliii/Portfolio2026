@@ -10,7 +10,7 @@ export interface NavItem {
 export const NAV_ITEMS: NavItem[] = [
   { label: 'Signal',  href: '#signal'  },
   { label: 'Work',    href: '#work'    },
-  { label: 'Approach', href: '#approach' },
+  { label: 'Experience', href: '#experience' },
   { label: 'Stack',   href: '#stack'   },
   { label: 'Ask My AI', href: '#knowledge-core' },
   { label: 'Contact', href: '#contact' },

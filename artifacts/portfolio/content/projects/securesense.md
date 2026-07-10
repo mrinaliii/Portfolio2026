@@ -5,21 +5,22 @@ subtitle: AI-Powered Sensitive Data Protection
 year: 2023
 category: SECURITY
 status: Completed
-shortDescription: A machine learning system detecting sensitive information using transformer embeddings and pattern recognition while monitoring suspicious access patterns through secure APIs and audit logging.
-description: A machine learning system that detects sensitive information using transformer embeddings and pattern recognition while monitoring suspicious access patterns through secure APIs and audit logging.
+shortDescription: A secure document analysis platform using FastAPI, LangChain, and Ollama, with Elasticsearch-powered semantic search and retrieval across indexed documents.
+description: Developed a secure document analysis platform using FastAPI, LangChain, and Ollama. Integrated Elasticsearch to enable semantic search and efficient retrieval across indexed documents, with REST APIs supporting secure querying, modular workflows, and scalable backend services.
 duration: 2 months
 role: Solo Engineer
+coverSrc: /projects/securesense/cover.jpg
 technologies:
-  - name: Transformers
-    tooltip: HuggingFace transformers for NLP classification
-  - name: NLP
-    tooltip: Natural language processing for text classification
-  - name: FastAPI
-    tooltip: High-performance async Python API server
   - name: Python
     tooltip: Primary language
-  - name: SQLite
-    tooltip: Audit log storage
+  - name: FastAPI
+    tooltip: High-performance async Python API server
+  - name: LangChain
+    tooltip: LLM orchestration framework for building AI pipelines
+  - name: Ollama
+    tooltip: Local LLM runtime for on-device inference
+  - name: Elasticsearch
+    tooltip: Full-text and semantic search across indexed documents
 ---
 
 ## PROJECT OVERVIEW — Detecting What Should Not Be There

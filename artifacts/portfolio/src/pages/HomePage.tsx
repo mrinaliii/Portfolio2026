@@ -23,7 +23,7 @@ import { Footer } from '../components/sections/Footer/Footer';
  * IA Section 0.1: "Hairlines appear between Signal and Work, Work and Approach,
  * before and after Knowledge Core."
  */
-const SECTION_IDS = ['hero', 'signal', 'work', 'approach', 'stack', 'knowledge-core', 'contact'];
+const SECTION_IDS = ['hero', 'signal', 'work', 'experience', 'stack', 'knowledge-core', 'contact'];
 
 export default function HomePage() {
   return (
