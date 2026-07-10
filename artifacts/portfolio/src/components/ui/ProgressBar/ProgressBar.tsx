@@ -7,7 +7,7 @@ import styles from './ProgressBar.module.css';
  * Connected to ProgressContext: start() shows the indeterminate shimmer,
  * finish() triggers the completion flash then fades out.
  *
- * Used for: Knowledge Core queries (Milestone 5), route transitions.
+ * Used for: route transitions.
  * DS Section 20.
  */
 export function ProgressBar() {

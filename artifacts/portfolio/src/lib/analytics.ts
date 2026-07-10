@@ -37,8 +37,6 @@ export const analytics = {
   demoClick: (slug: string): void =>
     track('demo_click', { project_slug: slug }),
 
-  knowledgeCoreQuery: (): void => track('knowledge_core_query'),
-
   themeChange: (theme: string): void => track('theme_change', { theme }),
 
   emailCopy: (): void => track('contact_email_copy'),

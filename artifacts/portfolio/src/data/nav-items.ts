@@ -12,7 +12,7 @@ export const NAV_ITEMS: NavItem[] = [
   { label: 'Work',    href: '#work'    },
   { label: 'Experience', href: '#experience' },
   { label: 'Stack',   href: '#stack'   },
-  { label: 'Ask My AI', href: '#knowledge-core' },
+  { label: 'Research', href: '#research' },
   { label: 'Contact', href: '#contact' },
 ];
 

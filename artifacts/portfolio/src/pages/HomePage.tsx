@@ -8,7 +8,7 @@ import { Signal } from '../components/sections/Signal/Signal';
 import { Work } from '../components/sections/Work/Work';
 import { Approach } from '../components/sections/Approach/Approach';
 import { Stack } from '../components/sections/Stack/Stack';
-import { KnowledgeCore } from '../components/sections/KnowledgeCore/KnowledgeCore';
+import { Research } from '../components/sections/Research/Research';
 import { Contact } from '../components/sections/Contact/Contact';
 import { Footer } from '../components/sections/Footer/Footer';
 
@@ -16,14 +16,14 @@ import { Footer } from '../components/sections/Footer/Footer';
  * Home page — single-page portfolio.
  * Section order per IA:
  *   Hero → [Hairline] → Signal → [Hairline auto] → Work → [Hairline] → Approach → [Hairline auto]
- *   → Stack → [KC Hairline] → Knowledge Core → [KC Hairline] → Contact → Footer
+ *   → Stack → [Hairline] → Research → [Hairline] → Contact → Footer
  *
- * Hairlines inside Signal, Approach, KnowledgeCore, and Contact are managed by the
+ * Hairlines inside Signal, Approach, Research, and Contact are managed by the
  * components themselves. The Hero→Signal Hairline is placed here.
  * IA Section 0.1: "Hairlines appear between Signal and Work, Work and Approach,
- * before and after Knowledge Core."
+ * before and after Research."
  */
-const SECTION_IDS = ['hero', 'signal', 'work', 'experience', 'stack', 'knowledge-core', 'contact'];
+const SECTION_IDS = ['hero', 'signal', 'work', 'experience', 'stack', 'research', 'contact'];
 
 export default function HomePage() {
   return (
@@ -63,8 +63,8 @@ export default function HomePage() {
         {/* Section 05 — Stack */}
         <Stack />
 
-        {/* Section 06 — Knowledge Core (includes Hairlines before and after) */}
-        <KnowledgeCore />
+        {/* Section 06 — Research (includes Hairlines before and after) */}
+        <Research />
 
         {/* Section 07 — Contact (includes Hairline at top) */}
         <Contact />
