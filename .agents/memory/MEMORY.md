@@ -1,2 +1,0 @@
-- [Portfolio scaffold setup](portfolio-scaffold.md) — Milestone 0 wiring decisions and known limitations (fonts, font preloads, build config)
-- [Lenis + scroll-behavior conflict](lenis-scroll-behavior-conflict.md) — Never set scroll-behavior:smooth on <html> when Lenis is active; causes autoscroll jump on load.
