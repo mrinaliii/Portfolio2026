@@ -23,7 +23,7 @@
 .heading {
   grid-column: 2;
   grid-row: 1;
-  font-family: var(--font-sans);
+  font-family: var(--font-heading);
   font-size: var(--text-heading-sm);
   font-weight: 700;
   line-height: var(--leading-heading-sm);

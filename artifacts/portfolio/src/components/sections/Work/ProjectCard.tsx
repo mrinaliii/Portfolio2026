@@ -9,10 +9,6 @@ import styles from './ProjectCard.module.css';
 
 interface ProjectCardProps {
   project: Project;
-  isHovered: boolean;
-  onMouseEnter: () => void;
-  onMouseLeave: () => void;
-  cardRef?: React.RefCallback<HTMLElement>;
 }
 
 /**
@@ -20,26 +16,17 @@ interface ProjectCardProps {
  * Anatomy: stamp row → title → descriptor → description → tags → ghost CTA.
  * Hover: translateY(-4px), border brightens, shadow appears, Signal Trace fires (in parent).
  */
-export function ProjectCard({
-  project,
-  isHovered,
-  onMouseEnter,
-  onMouseLeave,
-  cardRef,
-}: ProjectCardProps) {
+export function ProjectCard({ project }: ProjectCardProps) {
   const reducedMotion = useReducedMotion();
 
   return (
     <StaggerItem
       as="article"
-      ref={cardRef as React.Ref<HTMLElement>}
-      className={[styles.card, isHovered && styles.cardHovered].filter(Boolean).join(' ')}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
+      className={styles.card}
       whileHover={
         reducedMotion
           ? undefined
-          : { y: -8, scale: 1.02, transition: { type: 'spring', stiffness: 300, damping: 22 } }
+          : { y: -8, scale: 1.01, transition: { type: 'spring', stiffness: 500, damping: 28 } }
       }
     >
       {/* Stamp row: YEAR · CATEGORY */}

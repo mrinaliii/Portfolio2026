@@ -24,15 +24,26 @@
   z-index: var(--z-base);
 }
 
-/* Radial glow — DS Section 10a: exactly this gradient, off-center */
+/* Neural network wrapper — right 58% of the hero, full height */
+.networkWrapper {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 58%;
+  height: 100%;
+  pointer-events: auto;
+}
+
+/* Radial glow — sits behind the network on the right side */
 .radialGlow {
   position: absolute;
   inset: 0;
   background: radial-gradient(
-    ellipse 900px 600px at 25% 60%,
+    ellipse 700px 600px at 72% 50%,
     var(--color-glow-ambient-peak),
     transparent
   );
+  pointer-events: none;
 }
 
 /* ── Container override — vertical padding ────────────────────────────────── */
@@ -69,7 +80,7 @@
 .name {
   grid-column: 1 / 8;
   grid-row: 2;
-  font-family: var(--font-sans);
+  font-family: var(--font-heading);
   font-size: var(--text-hero);
   font-weight: 700;
   line-height: var(--leading-hero);
@@ -175,6 +186,13 @@
     font-size: var(--text-hero-tablet);
     letter-spacing: var(--tracking-display);
     line-height: var(--leading-display);
+  }
+
+  /* Network: full width on tablet, lower opacity to not crowd text */
+  .networkWrapper {
+    width: 100%;
+    opacity: 0.5;
+    pointer-events: none;
   }
 }
 

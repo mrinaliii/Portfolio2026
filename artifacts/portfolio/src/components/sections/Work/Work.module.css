@@ -3,7 +3,7 @@
 }
 
 .heading {
-  font-family: var(--font-sans);
+  font-family: var(--font-heading);
   font-size: var(--text-heading);
   font-weight: 700;
   line-height: var(--leading-heading);
@@ -12,21 +12,12 @@
   margin-bottom: var(--space-10);
 }
 
-/* ── Layout: cards + tech panel ───────────────────────────────────────────── */
-
-.layout {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-8);
-}
-
 /* ── 2-up card grid ───────────────────────────────────────────────────────── */
 
 .grid {
-  flex: 1;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-4);
+  gap: var(--space-8);
 }
 
 /* ── GitHub link row ──────────────────────────────────────────────────────── */
@@ -74,11 +65,7 @@
 
 /* ── Responsive ───────────────────────────────────────────────────────────── */
 
-@media (max-width: 1023px) {
-  .layout {
-    display: block;
-  }
-}
+
 
 @media (max-width: 767px) {
   .grid {

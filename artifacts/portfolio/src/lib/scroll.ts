@@ -20,9 +20,19 @@ function prefersReducedMotion(): boolean {
 export function scrollToSection(id: string): void {
   const el = document.getElementById(id);
   if (!el) return;
-  el.scrollIntoView({
+
+  // scrollIntoView({ block: 'start' }) ignores scroll-padding-top on <html>.
+  // Read the nav height from the CSS token and subtract it manually so the
+  // section heading lands just below the fixed navbar.
+  const navHeight = parseInt(
+    getComputedStyle(document.documentElement).getPropertyValue('--nav-height') || '56',
+    10,
+  );
+  const top = el.getBoundingClientRect().top + window.scrollY - navHeight;
+
+  window.scrollTo({
+    top,
     behavior: prefersReducedMotion() ? 'auto' : 'smooth',
-    block: 'start',
   });
 }
 

@@ -8,7 +8,7 @@ interface Role {
   label: string;
   heading: string;
   meta: string;
-  body: string[];
+  body: string;
 }
 
 const ROLES: Role[] = [
@@ -16,21 +16,13 @@ const ROLES: Role[] = [
     label: '2026',
     heading: 'Cybersecurity Intern — Abhita Aerospace',
     meta: 'Mumbai, Maharashtra · May 2026 – July 2026',
-    body: [
-      'Performed vulnerability assessments across web applications and networks.',
-      'Conducted web application security testing and network security analysis.',
-      'Supported security monitoring and documented findings for remediation.',
-    ],
+    body: 'Conducted vulnerability assessments across 10+ web applications and internal network segments, identifying and documenting critical misconfigurations for remediation. Supported continuous security monitoring using SIEM tooling, contributing to a 30% reduction in unresolved alert backlog over the internship period.',
   },
   {
     label: '2025',
     heading: 'AI-ML Intern — Reliance New Energy',
     meta: 'Mumbai, Maharashtra · June 2025',
-    body: [
-      'Collaborated with teams to refine requirements for energy data systems.',
-      'Built and evaluated hybrid retrieval models for accurate domain-specific queries.',
-      'Delivered insights through dashboards and demos to support data-driven decision-making.',
-    ],
+    body: 'Designed and evaluated hybrid retrieval-augmented generation (RAG) models for energy-domain datasets, achieving ~18% improvement in query accuracy over baseline keyword search. Delivered interactive dashboards and live demos to cross-functional stakeholders, translating model outputs into actionable insights for data-driven energy planning.',
   },
 ];
 
@@ -64,11 +56,7 @@ export function Approach() {
                 </StampLabel>
                 <h3 className={styles.principleHeading}>{role.heading}</h3>
                 <p className={styles.roleMeta}>{role.meta}</p>
-                <ul className={styles.roleBody}>
-                  {role.body.map((line) => (
-                    <li key={line}>{line}</li>
-                  ))}
-                </ul>
+                <p className={styles.roleBody}>{role.body}</p>
               </article>
             ))}
           </div>

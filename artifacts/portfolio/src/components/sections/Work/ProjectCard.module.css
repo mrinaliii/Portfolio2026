@@ -3,15 +3,20 @@
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-base);
-  padding: var(--space-8);
+  padding: var(--space-10);
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: var(--space-5);
   transition:
-    transform     var(--duration-component) var(--ease-component),
-    border-color  var(--duration-component) var(--ease-component),
-    box-shadow    var(--duration-component) var(--ease-component);
+    transform     120ms var(--ease-component),
+    border-color  120ms var(--ease-component),
+    box-shadow    120ms var(--ease-component);
   cursor: default;
+}
+
+.card:hover {
+  border-color: rgba(91, 168, 212, 0.5);
+  box-shadow: 0 0 0 1px rgba(91, 168, 212, 0.2), 0 0 24px rgba(91, 168, 212, 0.1);
 }
 
 .cardHovered {
@@ -26,9 +31,9 @@
   margin-bottom: var(--space-1);
 }
 
-/* Title — DS: Syne 28px weight 700 */
+/* Title — Syne 28px weight 700 */
 .title {
-  font-family: var(--font-sans);
+  font-family: var(--font-heading);
   font-size: var(--text-subheading);
   font-weight: 700;
   line-height: var(--leading-heading-sm);

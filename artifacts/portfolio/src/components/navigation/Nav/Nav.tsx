@@ -14,19 +14,14 @@ const SECTION_IDS = NAV_ITEMS.map((item) => item.href.replace('#', ''));
 const SCROLL_THRESHOLD = 120;
 
 /**
- * Fixed navigation bar — always visible, backdrop-blur frosted glass.
- * Left:   Name / monogram link
- * Center: Section links with active underline (useActiveSection)
- * Right:  ThemeToggle + Resume trigger (DrawerContext)
- *
- * Background opacity transitions from 0.75 → 0.92 after 120px scroll.
- * Below 768px: links and Resume button hidden, hamburger shown.
+ * Fixed navigation bar — glassmorphism on scroll, sliding active indicator,
+ * link hover lift, Resume button glow.
  *
  * DS Section 14, TIP Milestone 2.
  */
 export function Nav() {
-  const scrollY = useScrollY();
-  const activeId = useActiveSection(SECTION_IDS);
+  const scrollY   = useScrollY();
+  const activeId  = useActiveSection(SECTION_IDS);
   const { openDrawer } = useDrawerContext();
   const [mobileOpen, setMobileOpen] = useState(false);
   const scrolled = scrollY > SCROLL_THRESHOLD;
@@ -39,9 +34,10 @@ export function Nav() {
     <>
       <motion.header
         className={[styles.header, scrolled && styles.scrolled].filter(Boolean).join(' ')}
-        initial={{ opacity: 0, y: -20 }}
+        /* Slide down + fade on page load */
+        initial={{ opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className={styles.inner}>
           {/* Monogram / name */}
@@ -61,9 +57,9 @@ export function Nav() {
             <ul role="list">
               {NAV_ITEMS.map((item) => {
                 const sectionId = item.href.replace('#', '');
-                const isActive = activeId === sectionId;
+                const isActive  = activeId === sectionId;
                 return (
-                  <li key={item.href}>
+                  <li key={item.href} className={styles.navItem}>
                     <a
                       href={item.href}
                       className={[
@@ -77,6 +73,29 @@ export function Nav() {
                     >
                       {item.label}
                     </a>
+
+                    {/* Sliding underline — Framer Motion layoutId animates it
+                        from the previous active link to the new one */}
+                    {isActive && (
+                      <motion.span
+                        layoutId="nav-underline"
+                        style={{
+                          position:        'absolute',
+                          bottom:          0,
+                          left:            0,
+                          right:           0,
+                          height:          '1.5px',
+                          borderRadius:    '1px',
+                          backgroundColor: 'var(--color-ice-signal)',
+                          originX:         0,
+                        }}
+                        transition={{
+                          type:      'spring',
+                          stiffness: 380,
+                          damping:   32,
+                        }}
+                      />
+                    )}
                   </li>
                 );
               })}
@@ -86,7 +105,6 @@ export function Nav() {
           {/* Right actions */}
           <div className={styles.actions}>
             <ThemeToggle />
-            {/* Resume — wired to DrawerContext. Drawer panel added in Milestone 8. */}
             <Button
               variant="primary"
               className={styles.resumeBtn}
@@ -107,7 +125,6 @@ export function Nav() {
               aria-expanded={mobileOpen}
               aria-controls="mobile-nav"
             >
-              {/* Three 24px lines, 2px height, 6px apart (DS Section 14) */}
               <svg
                 width="24"
                 height="18"

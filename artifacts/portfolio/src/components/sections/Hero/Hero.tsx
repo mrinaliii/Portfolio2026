@@ -8,7 +8,7 @@ import { Button } from "../../ui/Button/Button";
 import { LazyImage } from "../../ui/LazyImage/LazyImage";
 import { StampLabel } from "../../ui/StampLabel/StampLabel";
 import { Container } from "../../layout/Container/Container";
-import { DriftParticles } from "./DriftParticles";
+import { NeuralNetwork } from "./NeuralNetwork";
 import { RadarPulse } from "./RadarPulse";
 import { StarField } from "./StarField";
 import styles from "./Hero.module.css";
@@ -93,9 +93,12 @@ export function Hero() {
       {/* ── Ambient layer ─────────────────────────────────────────────────── */}
       <div className={styles.ambient} aria-hidden="true">
         <StarField theme={theme} />
-        <DriftParticles />
+        {/* Neural network — right half overlay, pointer-events contained */}
+        <div className={styles.networkWrapper}>
+          <NeuralNetwork />
+        </div>
         <RadarPulse />
-        {/* Radial glow — CSS gradient, DS Section 10a */}
+        {/* Radial glow — DS Section 10a */}
         <div className={styles.radialGlow} />
       </div>
 

@@ -3,7 +3,7 @@
 }
 
 .heading {
-  font-family: var(--font-sans);
+  font-family: var(--font-heading);
   font-size: var(--text-heading);
   font-weight: 700;
   line-height: var(--leading-heading);
@@ -17,24 +17,35 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-8);
+  gap: var(--space-12);
 }
 
-/* Principle block — no card border (IA: "just spacing creating the boundary") */
+/* Principle block — subtle card border to frame each entry */
 .block {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-base);
+  padding: var(--space-10);
+  transition:
+    border-color  180ms var(--ease-component),
+    box-shadow    180ms var(--ease-component);
   /* Staggered CSS entrance — delay is set as CSS custom property by React */
   animation: fadeUp var(--duration-entrance) var(--ease-entrance) var(--stagger-delay, 0ms) both;
 }
 
-/* Label — illuminated stamp (IA §04: labels in --color-starlight; body copy in --color-steel/secondary) */
+.block:hover {
+  border-color: rgba(91, 168, 212, 0.5);
+  box-shadow: 0 0 0 1px rgba(91, 168, 212, 0.2), 0 0 24px rgba(91, 168, 212, 0.1);
+}
+
+/* Label — year stamp, visible in both themes */
 .principleLabel {
   display: block;
-  color: var(--color-starlight);
+  color: var(--color-text);
   margin-bottom: var(--space-4);
 }
 
 .principleHeading {
-  font-family: var(--font-sans);
+  font-family: var(--font-heading);
   font-size: var(--text-heading-sm);
   font-weight: 700;
   line-height: var(--leading-heading-sm);
@@ -62,29 +73,13 @@
 }
 
 .roleBody {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
   font-family: var(--font-sans);
   font-size: var(--text-body);
   font-weight: 400;
   line-height: var(--leading-body);
   letter-spacing: var(--tracking-body);
   color: var(--color-text-secondary);
-  list-style: none;
-  padding-left: 0;
-}
-
-.roleBody li {
-  position: relative;
-  padding-left: var(--space-4);
-}
-
-.roleBody li::before {
-  content: '—';
-  position: absolute;
-  left: 0;
-  color: var(--color-text-muted);
+  margin: 0;
 }
 
 /* Mobile: 1-up stack with hairline separators */

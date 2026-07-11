@@ -153,7 +153,8 @@
      =========================================================================== */
 
   /* Font families */
-  --font-sans: 'Syne', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-sans:    'Figtree', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-heading: 'Syne', ui-sans-serif, system-ui, -apple-system, sans-serif;
   --font-mono: 'Geist Mono', 'GeistMono', ui-monospace, 'Cascadia Code', monospace;
 
   /* Font sizes */

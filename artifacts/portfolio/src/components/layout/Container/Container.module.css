@@ -7,12 +7,12 @@
 /* See tokens.css — breakpoint literals required by CSS spec */
 @media (min-width: 640px) {
   .container {
-    padding-inline: var(--side-margin-tablet);
+    padding-inline: 16px;
   }
 }
 
 @media (min-width: 1024px) {
   .container {
-    padding-inline: var(--side-margin-desktop);
+    padding-inline: 16px;
   }
 }

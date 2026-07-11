@@ -1,21 +1,23 @@
 .section {
   scroll-margin-top: var(--nav-height);
-  /* DS Section 6 — Section rhythm: 128px desktop, 96px tablet, 80px mobile.
-     Applied once here so every section gets consistent vertical breathing room
-     without each section re-declaring its own padding. */
-  padding-block: var(--space-32);
+  /* DS Section 6 — Section rhythm.
+     Top padding is intentionally smaller than bottom so that when a user
+     clicks a nav link the heading lands close to the navbar, not 128px below it.
+     Bottom padding keeps generous visual separation between sections. */
+  padding-block-start: var(--space-12);   /* 48px */
+  padding-block-end:   var(--space-32);   /* 128px */
 }
 
 @media (max-width: 1023px) {
   .section {
-    padding-block: var(--space-24);
+    padding-block-start: var(--space-10);  /* 40px */
+    padding-block-end:   var(--space-24);  /* 96px */
   }
 }
 
 @media (max-width: 639px) {
   .section {
-    padding-block: var(--space-20);
+    padding-block-start: var(--space-8);   /* 32px */
+    padding-block-end:   var(--space-20);  /* 80px */
   }
 }
-
-/* Section entrance is now handled by Framer Motion in Section.tsx — no CSS needed here. */

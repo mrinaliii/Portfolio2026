@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { CaseStudyHeader } from '../components/case-study/CaseStudyHeader';
@@ -17,6 +18,11 @@ import styles from './CaseStudyPage.module.css';
  */
 export default function CaseStudyPage() {
   const { projectSlug } = useParams<{ projectSlug: string }>();
+
+  // Always start at the top when navigating to a case study.
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior });
+  }, [projectSlug]);
 
   if (!projectSlug) {
     return <Navigate to="/" replace />;

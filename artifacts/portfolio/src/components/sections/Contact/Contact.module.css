@@ -13,7 +13,7 @@
 }
 
 .heading {
-  font-family: var(--font-sans);
+  font-family: var(--font-heading);
   font-size: var(--text-heading);
   font-weight: 700;
   line-height: var(--leading-heading);

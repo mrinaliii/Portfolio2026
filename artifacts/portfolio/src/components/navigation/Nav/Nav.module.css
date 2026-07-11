@@ -1,3 +1,10 @@
+/* =============================================================================
+   Nav — DS Section 14
+   Glassmorphism on scroll, link hover lift, Resume button glow.
+   ============================================================================= */
+
+/* ── Section shell ─────────────────────────────────────────────────────────── */
+
 .header {
   position: fixed;
   top: 0;
@@ -5,20 +12,27 @@
   right: 0;
   height: var(--nav-height);
   z-index: var(--z-nav);
-  background-color: var(--color-nav-bg);
-  backdrop-filter: var(--backdrop-blur);
-  -webkit-backdrop-filter: var(--backdrop-blur);
+  /* Start fully transparent — glassmorphism kicks in on scroll (.scrolled) */
+  background-color: transparent;
   border-bottom: 1px solid transparent;
   transition:
-    background-color var(--duration-nav-scroll) var(--ease-out),
-    border-color     var(--duration-nav-scroll) var(--ease-out);
-  /* Nav entrance animation — now driven by Framer Motion in Nav.tsx */
+    background-color 280ms var(--ease-out),
+    border-color     280ms var(--ease-out),
+    backdrop-filter  280ms var(--ease-out),
+    -webkit-backdrop-filter 280ms var(--ease-out);
 }
 
+/* After 120 px scroll → frosted glass panel */
 .scrolled {
   background-color: var(--color-nav-bg-scrolled);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
   border-bottom-color: var(--color-border);
+  /* Subtle inner glow to reinforce depth */
+  box-shadow: 0 1px 0 0 var(--color-border), 0 4px 24px rgba(0, 0, 0, 0.18);
 }
+
+/* ── Inner layout ───────────────────────────────────────────────────────────── */
 
 .inner {
   display: flex;
@@ -30,24 +44,27 @@
   gap: var(--space-8);
 }
 
-/* ── Monogram ─────────────────────────────────────────────────────────────── */
+/* ── Monogram ────────────────────────────────────────────────────────────────── */
 
 .monogram {
-  font-family: var(--font-sans);
+  font-family: var(--font-heading);
   font-size: var(--text-body);
   font-weight: 700;
   color: var(--color-text);
   letter-spacing: var(--tracking-body);
   text-decoration: none;
   flex-shrink: 0;
-  transition: color var(--duration-micro) var(--ease-out);
+  transition:
+    color     200ms var(--ease-out),
+    transform 200ms var(--ease-out);
 }
 
 .monogram:hover {
   color: var(--color-ice-signal);
+  transform: translateY(-1px);
 }
 
-/* ── Desktop links ────────────────────────────────────────────────────────── */
+/* ── Desktop links ───────────────────────────────────────────────────────────── */
 
 .links {
   flex: 1;
@@ -64,40 +81,36 @@
   padding: 0;
 }
 
+/* Each <li> needs position:relative to contain the sliding indicator */
+.navItem {
+  position: relative;
+}
+
 .link {
-  font-family: var(--font-sans);
+  font-family: var(--font-heading);
   font-size: var(--text-body-sm);
   font-weight: 400;
   color: var(--color-text-secondary);
   text-decoration: none;
   position: relative;
   padding-block: var(--space-1);
-  transition: color var(--duration-micro) var(--ease-out);
+  display: block;
+  transition:
+    color     200ms var(--ease-out),
+    transform 200ms var(--ease-out);
 }
 
 .link:hover {
   color: var(--color-text);
-}
-
-/* Active indicator — 1.5px underline in --color-ice-signal */
-.link::after {
-  content: '';
-  position: absolute;
-  bottom: -2px;
-  left: 0;
-  width: 0;
-  height: 1.5px;
-  background-color: var(--color-ice-signal);
-  transition: width var(--duration-standard) var(--ease-standard);
+  transform: translateY(-1px);
 }
 
 .linkActive {
   color: var(--color-text);
 }
 
-.linkActive::after {
-  width: 100%;
-}
+/* Sliding underline indicator — rendered as a sibling <motion.span> via layoutId.
+   The ::after approach is removed; the animated span handles indicator movement. */
 
 /* ── Right actions (desktop) ─────────────────────────────────────────────── */
 
@@ -108,9 +121,21 @@
   flex-shrink: 0;
 }
 
+/* Resume button — magnetic scale + glow on hover */
 .resumeBtn {
-  /* Slightly smaller padding in nav context — still uses the token */
   padding-block: var(--space-2);
+  transition:
+    transform  220ms var(--ease-out),
+    box-shadow 220ms var(--ease-out) !important;
+}
+
+.resumeBtn:hover {
+  transform: scale(1.03) translateY(-1px) !important;
+  box-shadow: 0 0 0 1px rgba(91, 168, 212, 0.35), 0 4px 20px rgba(91, 168, 212, 0.20) !important;
+}
+
+.resumeBtn:active {
+  transform: scale(0.98) !important;
 }
 
 /* ── Mobile actions ───────────────────────────────────────────────────────── */

@@ -1,0 +1,9 @@
+.local/
+.agents/
+.config/
+logs/
+*.log
+zipFile.zip
+screenshots/
+node_modules/
+dist/
