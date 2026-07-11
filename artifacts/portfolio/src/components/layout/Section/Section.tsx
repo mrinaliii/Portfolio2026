@@ -1,8 +1,9 @@
-import { type HTMLAttributes, type ReactNode } from 'react';
-import { useInView } from '../../../hooks/useInView';
+import React, { type ReactNode } from 'react';
+import { motion, type HTMLMotionProps, useReducedMotion } from 'framer-motion';
+import { fadeUp, revealViewport } from '../../../lib/motion';
 import styles from './Section.module.css';
 
-interface SectionProps extends HTMLAttributes<HTMLElement> {
+interface SectionProps extends HTMLMotionProps<'section'> {
   id: string;
   children: ReactNode;
   /** ID of the heading element that labels this section for screen readers */
@@ -20,8 +21,8 @@ interface SectionProps extends HTMLAttributes<HTMLElement> {
  * Semantic section wrapper.
  * - Sets data-section attribute for useActiveSection hook
  * - Applies scroll-margin-top so anchors clear the fixed nav
- * - Triggers fadeUp entrance animation once on first viewport entry
- *   (disabled for Hero which manages its own stagger sequence)
+ * - Triggers a Framer Motion fade + slide-up entrance once on first
+ *   viewport entry (disabled for Hero which manages its own stagger)
  *
  * DS Section 9 entrance animations.
  */
@@ -33,25 +34,35 @@ export function Section({
   className,
   ...props
 }: SectionProps) {
-  const [ref, inView] = useInView<HTMLElement>({ rootMargin: '-80px' });
+  const reducedMotion = useReducedMotion();
+
+  if (!animate || reducedMotion) {
+    return (
+      <section
+        id={id}
+        data-section={id}
+        aria-labelledby={labelledBy}
+        className={[styles.section, className].filter(Boolean).join(' ')}
+        {...(props as React.HTMLAttributes<HTMLElement>)}
+      >
+        {children}
+      </section>
+    );
+  }
 
   return (
-    <section
-      ref={animate ? ref : undefined}
+    <motion.section
       id={id}
       data-section={id}
       aria-labelledby={labelledBy}
-      className={[
-        styles.section,
-        animate && styles.animatable,
-        animate && inView && styles.inView,
-        className,
-      ]
-        .filter(Boolean)
-        .join(' ')}
+      className={[styles.section, className].filter(Boolean).join(' ')}
+      initial="hidden"
+      whileInView="visible"
+      viewport={revealViewport}
+      variants={fadeUp}
       {...props}
     >
       {children}
-    </section>
+    </motion.section>
   );
 }

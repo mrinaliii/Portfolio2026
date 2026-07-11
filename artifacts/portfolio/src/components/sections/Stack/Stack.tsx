@@ -6,49 +6,41 @@ import styles from './Stack.module.css';
 
 const SKILL_GROUPS = [
   {
-    label: 'AI & ML',
-    skills: [
-      'Machine Learning',
-      'RAG',
-      'NLP',
-      'LangChain',
-      'TensorFlow',
-      'PyTorch',
-      'Prompt Engineering',
-    ],
-  },
-  {
-    label: 'Security',
-    skills: [
-      'Splunk',
-      'Elasticsearch',
-      'Wazuh',
-      'MITRE ATT&CK',
-      'Vuln Assessment',
-      'Network Security',
-      'Web App Security',
-    ],
-  },
-  {
-    label: 'Cloud',
-    skills: [
-      'AWS Lambda',
-      'Amazon ECS',
-      'DynamoDB',
-      'Docker',
-      'REST APIs',
-    ],
-  },
-  {
-    label: 'Engineering',
+    label: '01 / PROGRAMMING',
     skills: [
       'Python',
       'C++',
       'SQL',
-      'FastAPI',
-      'React',
-      'Node.js',
+    ],
+  },
+  {
+    label: '02 / ARTIFICIAL INTELLIGENCE',
+    skills: [
+      'Machine Learning',
+      'NLP',
+      'RAG',
+      'LangChain',
+      'Prompt Engineering',
+      'TensorFlow',
+      'PyTorch',
+    ],
+  },
+  {
+    label: '03 / CYBERSECURITY',
+    skills: [
+      'Splunk',
+      'Wazuh',
+      'MITRE ATT&CK',
+      'Vulnerability Assessment',
+      'Network Security',
+      'Web Application Security',
+    ],
+  },
+  {
+    label: '04 / TOOLS',
+    skills: [
       'Git',
+      'GitHub',
     ],
   },
 ];

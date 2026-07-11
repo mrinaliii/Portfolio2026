@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
 import styles from './LazyImage.module.css';
 
 interface LazyImageProps {
@@ -36,6 +37,7 @@ export function LazyImage({
 }: LazyImageProps) {
   const [loaded, setLoaded] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
+  const reducedMotion = useReducedMotion();
 
   // Handle already-cached images (img.complete fires before onLoad)
   useEffect(() => {
@@ -58,11 +60,11 @@ export function LazyImage({
         draggable={false}
       />
 
-      {/* Full resolution — fades in on load */}
+      {/* Full resolution — fades + scales in on load */}
       <picture>
         {avif && <source srcSet={avif} type="image/avif" />}
         {webp && <source srcSet={webp} type="image/webp" />}
-        <img
+        <motion.img
           ref={imgRef}
           className={[styles.full, loaded && styles.fullLoaded].filter(Boolean).join(' ')}
           src={src}
@@ -73,6 +75,13 @@ export function LazyImage({
           decoding={eager ? 'sync' : 'async'}
           onLoad={() => setLoaded(true)}
           draggable={false}
+          initial={false}
+          animate={
+            reducedMotion
+              ? undefined
+              : { opacity: loaded ? 1 : 0, scale: loaded ? 1 : 0.96 }
+          }
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         />
       </picture>
     </div>

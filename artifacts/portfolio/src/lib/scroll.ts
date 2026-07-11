@@ -8,14 +8,22 @@
  * to prevent the native jump and use smooth scroll instead.
  */
 
+function prefersReducedMotion(): boolean {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
+
 /**
  * Smooth-scrolls to a section by its ID.
  * Falls back silently if the element doesn't exist yet (future milestones).
+ * Respects prefers-reduced-motion by jumping instantly instead of animating.
  */
 export function scrollToSection(id: string): void {
   const el = document.getElementById(id);
   if (!el) return;
-  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  el.scrollIntoView({
+    behavior: prefersReducedMotion() ? 'auto' : 'smooth',
+    block: 'start',
+  });
 }
 
 /**
@@ -34,7 +42,8 @@ export function handleAnchorClick(
 
 /**
  * Scrolls to the top of the page.
+ * Respects prefers-reduced-motion by jumping instantly instead of animating.
  */
 export function scrollToTop(): void {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
 }

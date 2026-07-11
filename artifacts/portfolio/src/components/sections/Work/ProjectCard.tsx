@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import { useReducedMotion } from 'framer-motion';
 import { StampLabel } from '../../ui/StampLabel/StampLabel';
 import { Tag } from '../../ui/Tag/Tag';
+import { StaggerItem } from '../../motion/Stagger';
 import type { Project } from 'virtual:projects';
 import styles from './ProjectCard.module.css';
 
@@ -25,12 +27,20 @@ export function ProjectCard({
   onMouseLeave,
   cardRef,
 }: ProjectCardProps) {
+  const reducedMotion = useReducedMotion();
+
   return (
-    <article
-      ref={cardRef}
+    <StaggerItem
+      as="article"
+      ref={cardRef as React.Ref<HTMLElement>}
       className={[styles.card, isHovered && styles.cardHovered].filter(Boolean).join(' ')}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      whileHover={
+        reducedMotion
+          ? undefined
+          : { y: -8, scale: 1.02, transition: { type: 'spring', stiffness: 300, damping: 22 } }
+      }
     >
       {/* Stamp row: YEAR · CATEGORY */}
       <StampLabel className={styles.stamp}>
@@ -63,6 +73,6 @@ export function ProjectCard({
         Read Case Study
         <ArrowRight size={14} strokeWidth={1.5} aria-hidden="true" />
       </Link>
-    </article>
+    </StaggerItem>
   );
 }

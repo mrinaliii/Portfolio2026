@@ -159,14 +159,14 @@
   /* Font sizes */
   --text-stamp:      11px;
   --text-button-ghost: 13px;   /* Ghost/text button — not in main reading scale */
-  --text-caption:    12px;
-  --text-body-sm:    14px;
-  --text-body:       16px;
-  --text-body-lg:    18px;
-  --text-subheading: 20px;
-  --text-heading-sm: 28px;
-  --text-heading:    40px;
-  --text-heading-lg: 56px;
+  --text-caption:    13px;
+  --text-body-sm:    15px;
+  --text-body:       17px;
+  --text-body-lg:    20px;
+  --text-subheading: 22px;
+  --text-heading-sm: 30px;
+  --text-heading:    44px;
+  --text-heading-lg: 60px;
   --text-display:    72px;
   --text-display-lg: 88px;
   --text-hero:       104px;

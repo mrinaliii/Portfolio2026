@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion } from 'framer-motion';
 import { useDrawerContext } from '../../../context/DrawerContext';
 import { useActiveSection } from '../../../hooks/useActiveSection';
 import { useScrollY } from '../../../hooks/useScrollY';
@@ -36,8 +37,11 @@ export function Nav() {
 
   return (
     <>
-      <header
+      <motion.header
         className={[styles.header, scrolled && styles.scrolled].filter(Boolean).join(' ')}
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className={styles.inner}>
           {/* Monogram / name */}
@@ -118,7 +122,7 @@ export function Nav() {
             </button>
           </div>
         </div>
-      </header>
+      </motion.header>
 
       <MobileNav
         id="mobile-nav"

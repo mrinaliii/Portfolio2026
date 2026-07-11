@@ -3,6 +3,7 @@ import { ExternalLink } from 'lucide-react';
 import { Section } from '../../layout/Section/Section';
 import { Container } from '../../layout/Container/Container';
 import { StampLabel } from '../../ui/StampLabel/StampLabel';
+import { StaggerGroup } from '../../motion/Stagger';
 import { ProjectCard } from './ProjectCard';
 import { TechPanel } from './TechPanel';
 import { SignalTrace } from './SignalTrace';
@@ -61,7 +62,7 @@ export function Work() {
 
         <div className={styles.layout}>
           {/* Cards */}
-          <div className={styles.grid}>
+          <StaggerGroup as="div" className={styles.grid} stagger={0.1}>
             {PROJECTS.map((project) => (
               <ProjectCard
                 key={project.slug}
@@ -72,7 +73,7 @@ export function Work() {
                 cardRef={getCardRef(project.slug)}
               />
             ))}
-          </div>
+          </StaggerGroup>
 
           {/* Tech Panel — desktop only */}
           <div ref={panelRef as React.RefObject<HTMLDivElement>}>

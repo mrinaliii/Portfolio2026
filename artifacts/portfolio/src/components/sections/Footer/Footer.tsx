@@ -1,3 +1,4 @@
+import { motion, useReducedMotion } from 'framer-motion';
 import { scrollToTop } from '../../../lib/scroll';
 import styles from './Footer.module.css';
 
@@ -9,6 +10,7 @@ import styles from './Footer.module.css';
  */
 export function Footer() {
   const year = new Date().getFullYear();
+  const reducedMotion = useReducedMotion();
 
   return (
     <footer className={styles.footer}>
@@ -24,13 +26,16 @@ export function Footer() {
           <span className={styles.copyright}>
             © {year} · Mrinali Charhate
           </span>
-          <button
+          <motion.button
             className={styles.backToTop}
             onClick={scrollToTop}
             aria-label="Back to top of page"
+            whileHover={reducedMotion ? undefined : { scale: 1.05 }}
+            whileTap={reducedMotion ? undefined : { scale: 0.95 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 17 }}
           >
             Back to top ↑
-          </button>
+          </motion.button>
         </div>
       </div>
     </footer>

@@ -12,8 +12,7 @@
   transition:
     background-color var(--duration-nav-scroll) var(--ease-out),
     border-color     var(--duration-nav-scroll) var(--ease-out);
-  /* Nav entrance animation — element 1 in the hero sequence */
-  animation: fadeDown var(--duration-component) var(--ease-entrance) both;
+  /* Nav entrance animation — now driven by Framer Motion in Nav.tsx */
 }
 
 .scrolled {

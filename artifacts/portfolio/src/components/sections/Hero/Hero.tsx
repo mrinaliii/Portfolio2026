@@ -1,7 +1,9 @@
 import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import { useTheme } from "../../../hooks/useTheme";
 import { useReducedMotion } from "../../../hooks/useReducedMotion";
 import { scrollToSection } from "../../../lib/scroll";
+import { fadeUpSmall, staggerContainer } from "../../../lib/motion";
 import { Button } from "../../ui/Button/Button";
 import { LazyImage } from "../../ui/LazyImage/LazyImage";
 import { StampLabel } from "../../ui/StampLabel/StampLabel";
@@ -99,22 +101,33 @@ export function Hero() {
 
       {/* ── Content grid ──────────────────────────────────────────────────── */}
       <Container className={styles.container}>
-        <div className={styles.heroGrid}>
-          {/* Element 2 — Stamp (200ms / 500ms) */}
-          <StampLabel className={styles.stamp}>Hello, I&#8217;m</StampLabel>
+        <motion.div
+          className={styles.heroGrid}
+          initial={reducedMotion ? undefined : "hidden"}
+          animate={reducedMotion ? undefined : "visible"}
+          variants={staggerContainer(0.14, 0.15)}
+        >
+          {/* Element 2 — Stamp */}
+          <motion.div variants={fadeUpSmall} className={styles.stamp}>
+            <StampLabel>Hello, I&#8217;m</StampLabel>
+          </motion.div>
 
-          {/* Element 3 — Name headline (350ms / 700ms) */}
-          <h1 ref={nameRef} className={styles.name}>
+          {/* Element 3 — Name headline */}
+          <motion.h1 ref={nameRef} variants={fadeUpSmall} className={styles.name}>
             Mrinali Charhate
-          </h1>
+          </motion.h1>
 
-          {/* Element 4 — Descriptor (450ms / 700ms) */}
-          <p ref={descriptorRef} className={styles.descriptor}>
+          {/* Element 4 — Descriptor */}
+          <motion.p ref={descriptorRef} variants={fadeUpSmall} className={styles.descriptor}>
             Building Intelligent Systems
-          </p>
+          </motion.p>
 
-          {/* Element 7 — Portrait (900ms / 500ms / fade only) */}
-          <div ref={portraitRef} className={styles.portraitColumn}>
+          {/* Element 7 — Portrait (fade + scale into view) */}
+          <motion.div
+            ref={portraitRef}
+            variants={fadeUpSmall}
+            className={styles.portraitColumn}
+          >
             <LazyImage
               src={PORTRAIT_SRC}
               lqip={PORTRAIT_LQIP}
@@ -123,17 +136,17 @@ export function Hero() {
               eager
               className={styles.portrait}
             />
-          </div>
+          </motion.div>
 
-          {/* Element 5 — Subtext (600ms / 500ms) */}
-          <p className={styles.subtext}>
+          {/* Element 5 — Subtext */}
+          <motion.p variants={fadeUpSmall} className={styles.subtext}>
             Computer Science student specializing in Information Security,
             exploring the intersection of Artificial Intelligence, Machine
             Learning, and Cybersecurity.
-          </p>
+          </motion.p>
 
-          {/* Element 6 — CTA row (750ms / 400ms) */}
-          <div className={styles.ctaRow}>
+          {/* Element 6 — CTA row */}
+          <motion.div variants={fadeUpSmall} className={styles.ctaRow}>
             <Button
               variant="primary"
               onClick={() => scrollToSection("work")}
@@ -148,8 +161,8 @@ export function Hero() {
             >
               About Me
             </Button>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </Container>
     </section>
   );

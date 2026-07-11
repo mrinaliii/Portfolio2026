@@ -18,17 +18,4 @@
   }
 }
 
-/* Entrance animation — initially invisible and translated down */
-.animatable {
-  opacity: 0;
-  transform: translateY(var(--translate-entrance));
-  /* Transition rather than animation so reduced-motion collapse applies cleanly */
-  transition:
-    opacity   var(--duration-entrance) var(--ease-entrance),
-    transform var(--duration-entrance) var(--ease-entrance);
-}
-
-.inView {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* Section entrance is now handled by Framer Motion in Section.tsx — no CSS needed here. */

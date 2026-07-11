@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Github, Linkedin, Mail } from 'lucide-react';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Section } from '../../layout/Section/Section';
 import { StampLabel } from '../../ui/StampLabel/StampLabel';
 import { Hairline } from '../../layout/Hairline/Hairline';
@@ -36,6 +37,15 @@ export function Contact() {
     analytics.socialClick(platform);
   }
 
+  const reducedMotion = useReducedMotion();
+  const iconHoverProps = reducedMotion
+    ? {}
+    : {
+        whileHover: { scale: 1.15, rotate: 6 },
+        whileTap: { scale: 0.95 },
+        transition: { type: 'spring' as const, stiffness: 400, damping: 15 },
+      };
+
   return (
     <>
       <Hairline />
@@ -69,36 +79,39 @@ export function Contact() {
 
           {/* Social links — ghost buttons */}
           <div className={styles.socials}>
-            <a
+            <motion.a
               href={LINKEDIN_URL}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.socialLink}
               onClick={() => handleSocialClick('linkedin')}
               aria-label="LinkedIn profile"
+              {...iconHoverProps}
             >
               <Linkedin size={16} strokeWidth={1.5} aria-hidden="true" />
               LinkedIn
-            </a>
-            <a
+            </motion.a>
+            <motion.a
               href={GITHUB_URL}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.socialLink}
               onClick={() => handleSocialClick('github')}
               aria-label="GitHub profile"
+              {...iconHoverProps}
             >
               <Github size={16} strokeWidth={1.5} aria-hidden="true" />
               GitHub
-            </a>
-            <a
+            </motion.a>
+            <motion.a
               href={`mailto:${EMAIL}`}
               className={styles.socialLink}
               aria-label="Send email"
+              {...iconHoverProps}
             >
               <Mail size={16} strokeWidth={1.5} aria-hidden="true" />
               Email
-            </a>
+            </motion.a>
           </div>
         </div>
       </Section>

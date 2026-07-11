@@ -7,6 +7,7 @@ import { ThemeProvider } from './context/ThemeContext';
 import { ProgressBar } from './components/ui/ProgressBar/ProgressBar';
 import { SkipLink } from './components/ui/SkipLink/SkipLink';
 import { ResumeDrawer } from './components/resume-drawer/ResumeDrawer';
+import { useLenis } from './hooks/useLenis';
 
 const HomePage = lazy(() => import('./pages/HomePage'));
 const CaseStudyPage = lazy(() => import('./pages/CaseStudyPage'));
@@ -21,6 +22,8 @@ const CaseStudyPage = lazy(() => import('./pages/CaseStudyPage'));
  * ResumeDrawer: globally mounted; toggled by DrawerContext.openDrawer().
  */
 export default function App() {
+  useLenis();
+
   return (
     <HelmetProvider>
       <ThemeProvider>
