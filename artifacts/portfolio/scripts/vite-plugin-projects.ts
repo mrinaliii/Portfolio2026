@@ -49,6 +49,7 @@ export interface Project {
   technologies: Technology[];
   liveUrl?: string;
   githubUrl?: string;
+  githubNote?: string;
   caseStudySections: CaseStudySection[];
   gallery?: GalleryImage[];
   codeExample?: string;
@@ -138,6 +139,7 @@ function loadProjects(contentDir: string): Project[] {
 
     if (data.liveUrl) project.liveUrl = data.liveUrl as string;
     if (data.githubUrl) project.githubUrl = data.githubUrl as string;
+    if (data.githubNote) project.githubNote = data.githubNote as string;
     if (data.gallery) project.gallery = data.gallery as GalleryImage[];
     if (data.codeExample) project.codeExample = data.codeExample as string;
     if (data.coverSrc) project.coverSrc = data.coverSrc as string;

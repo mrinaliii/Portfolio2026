@@ -24,6 +24,18 @@
   text-decoration: none;
 }
 
+/* NDA / unavailable note */
+.githubNote {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-mono);
+  font-size: var(--text-caption);
+  font-weight: 400;
+  color: var(--color-text-muted);
+  letter-spacing: var(--tracking-caption);
+}
+
 .backLink {
   font-family: var(--font-sans);
   font-size: var(--text-body-sm);

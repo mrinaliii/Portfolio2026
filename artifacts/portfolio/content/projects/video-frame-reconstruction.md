@@ -1,4 +1,5 @@
 ---
+githubUrl: https://github.com/mrinaliii/Video_Reconstruction
 slug: video-frame-reconstruction
 title: Video Frame Reconstruction
 subtitle: Graph-Based Frame Sequencing
@@ -22,6 +23,7 @@ technologies:
   - name: Parallel Computing
     tooltip: Parallelized similarity computation for scalability
 ---
+githubUrl: https://github.com/mrinaliii/Video_Reconstruction
 
 ## PROJECT OVERVIEW — Putting the Story Back in Order
 

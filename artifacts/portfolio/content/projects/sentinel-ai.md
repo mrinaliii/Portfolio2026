@@ -1,4 +1,5 @@
 ---
+githubUrl: https://github.com/mrinaliii/sentinel-ai
 slug: sentinel-ai
 title: Sentinel AI
 subtitle: AI-Powered SOC Analyst
@@ -22,6 +23,7 @@ technologies:
   - name: Regex
     tooltip: Pattern-based rules for structured log and alert parsing
 ---
+githubUrl: https://github.com/mrinaliii/sentinel-ai
 
 ## PROJECT OVERVIEW — The Problem With Alert Fatigue
 

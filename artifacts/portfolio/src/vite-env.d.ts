@@ -44,6 +44,7 @@ declare module 'virtual:projects' {
     technologies: Technology[];
     liveUrl?: string;
     githubUrl?: string;
+    githubNote?: string;
     caseStudySections: CaseStudySection[];
     gallery?: GalleryImage[];
     codeExample?: string;

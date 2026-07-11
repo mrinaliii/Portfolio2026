@@ -11,7 +11,7 @@ import { PROJECTS } from 'virtual:projects';
 import type { Project } from 'virtual:projects';
 import styles from './Work.module.css';
 
-const GITHUB_PROFILE = 'https://github.com/mrinali-charhate';
+const GITHUB_PROFILE = 'https://github.com/mrinaliii';
 
 /**
  * Section 03 — Work.

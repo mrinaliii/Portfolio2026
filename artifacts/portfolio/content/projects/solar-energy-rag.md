@@ -1,4 +1,5 @@
 ---
+githubNote: "Due to an NDA signed with the client, the GitHub repository cannot be made public."
 slug: solar-energy-rag
 title: Solar Energy RAG
 subtitle: Retrieval-Augmented Generation Platform
@@ -22,6 +23,7 @@ technologies:
   - name: Ollama
     tooltip: Local LLM runtime for on-device inference
 ---
+githubNote: "Due to an NDA signed with the client, the GitHub repository cannot be made public."
 
 ## PROJECT OVERVIEW — Making Structured Reports Queryable
 

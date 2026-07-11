@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Github, Linkedin, Mail } from 'lucide-react';
-import { motion, useReducedMotion } from 'framer-motion';
 import { Section } from '../../layout/Section/Section';
 import { StampLabel } from '../../ui/StampLabel/StampLabel';
 import { Hairline } from '../../layout/Hairline/Hairline';
@@ -10,8 +9,8 @@ import { analytics } from '../../../lib/analytics';
 import styles from './Contact.module.css';
 
 const EMAIL = 'mrinalicharhate@gmail.com';
-const LINKEDIN_URL = 'https://linkedin.com/in/mrinali-charhate';
-const GITHUB_URL = 'https://github.com/mrinali-charhate';
+const LINKEDIN_URL = 'https://www.linkedin.com/in/mrinalicharhate';
+const GITHUB_URL = 'https://github.com/mrinaliii';
 
 /**
  * Section 07 — Contact.
@@ -36,15 +35,6 @@ export function Contact() {
   function handleSocialClick(platform: string) {
     analytics.socialClick(platform);
   }
-
-  const reducedMotion = useReducedMotion();
-  const iconHoverProps = reducedMotion
-    ? {}
-    : {
-        whileHover: { scale: 1.15, rotate: 6 },
-        whileTap: { scale: 0.95 },
-        transition: { type: 'spring' as const, stiffness: 400, damping: 15 },
-      };
 
   return (
     <>
@@ -77,41 +67,38 @@ export function Contact() {
             </a>
           </Tooltip>
 
-          {/* Social links — ghost buttons */}
+          {/* Social links — highlight on hover, no tilt */}
           <div className={styles.socials}>
-            <motion.a
+            <a
               href={LINKEDIN_URL}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.socialLink}
               onClick={() => handleSocialClick('linkedin')}
               aria-label="LinkedIn profile"
-              {...iconHoverProps}
             >
               <Linkedin size={16} strokeWidth={1.5} aria-hidden="true" />
               LinkedIn
-            </motion.a>
-            <motion.a
+            </a>
+            <a
               href={GITHUB_URL}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.socialLink}
               onClick={() => handleSocialClick('github')}
               aria-label="GitHub profile"
-              {...iconHoverProps}
             >
               <Github size={16} strokeWidth={1.5} aria-hidden="true" />
               GitHub
-            </motion.a>
-            <motion.a
+            </a>
+            <a
               href={`mailto:${EMAIL}`}
               className={styles.socialLink}
               aria-label="Send email"
-              {...iconHoverProps}
             >
               <Mail size={16} strokeWidth={1.5} aria-hidden="true" />
               Email
-            </motion.a>
+            </a>
           </div>
         </div>
       </Section>

@@ -1,4 +1,4 @@
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, Lock } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '../ui/Button/Button';
 import { analytics } from '../../lib/analytics';
@@ -11,6 +11,7 @@ interface LinksSectionProps {
 
 /**
  * Case study footer links — GitHub, Live Demo, ← Back to Projects.
+ * When githubNote is set (e.g. NDA), shows a muted note instead of a button.
  * TIP Milestone 7, DS Section 24.
  */
 export function LinksSection({ project }: LinksSectionProps) {
@@ -32,6 +33,14 @@ export function LinksSection({ project }: LinksSectionProps) {
                 View on GitHub
               </Button>
             </a>
+          )}
+
+          {/* NDA / unavailability note when no github URL is provided */}
+          {!project.githubUrl && project.githubNote && (
+            <span className={styles.githubNote}>
+              <Lock size={13} strokeWidth={1.5} aria-hidden="true" />
+              {project.githubNote}
+            </span>
           )}
 
           {project.liveUrl && (

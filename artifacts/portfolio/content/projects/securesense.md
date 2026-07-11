@@ -1,4 +1,5 @@
 ---
+githubUrl: https://github.com/mrinaliii/SecureSense
 slug: securesense
 title: SecureSense
 subtitle: AI-Powered Sensitive Data Protection
@@ -22,6 +23,7 @@ technologies:
   - name: Elasticsearch
     tooltip: Full-text and semantic search across indexed documents
 ---
+githubUrl: https://github.com/mrinaliii/SecureSense
 
 ## PROJECT OVERVIEW — Detecting What Should Not Be There
 
