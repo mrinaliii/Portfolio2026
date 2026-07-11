@@ -29,7 +29,7 @@
 /* Title — DS: Syne 28px weight 700 */
 .title {
   font-family: var(--font-sans);
-  font-size: var(--text-heading-sm);
+  font-size: var(--text-subheading);
   font-weight: 700;
   line-height: var(--leading-heading-sm);
   letter-spacing: var(--tracking-heading-sm);

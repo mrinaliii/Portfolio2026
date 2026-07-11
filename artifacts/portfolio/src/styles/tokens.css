@@ -157,16 +157,16 @@
   --font-mono: 'Geist Mono', 'GeistMono', ui-monospace, 'Cascadia Code', monospace;
 
   /* Font sizes */
-  --text-stamp:      11px;
+  --text-stamp:      13px;
   --text-button-ghost: 13px;   /* Ghost/text button — not in main reading scale */
   --text-caption:    13px;
-  --text-body-sm:    15px;
+  --text-body-sm:    16px;
   --text-body:       17px;
   --text-body-lg:    20px;
   --text-subheading: 22px;
-  --text-heading-sm: 30px;
-  --text-heading:    44px;
-  --text-heading-lg: 60px;
+  --text-heading-sm: 26px;
+  --text-heading:    40px;
+  --text-heading-lg: 56px;
   --text-display:    72px;
   --text-display-lg: 88px;
   --text-hero:       104px;

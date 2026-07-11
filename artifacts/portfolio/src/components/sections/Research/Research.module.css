@@ -31,16 +31,21 @@
 
 .itemLabel {
   display: block;
-  color: var(--color-starlight);
+  /* Use the semantic accent token — visible in both light and dark mode.
+     --color-starlight is a raw palette value (#dce8f5) that washes out on the
+     light canvas; --color-ice-signal is the theme-aware accent. */
+  color: var(--color-ice-signal);
   margin-bottom: var(--space-4);
 }
 
 .itemHeading {
   font-family: var(--font-sans);
-  font-size: var(--text-heading-sm);
+  /* Card titles sit inside a compact card — subheading scale (22px) reads better
+     than heading-sm (26px) here and keeps content density comfortable. */
+  font-size: var(--text-subheading);
   font-weight: 700;
-  line-height: var(--leading-heading-sm);
-  letter-spacing: var(--tracking-heading-sm);
+  line-height: var(--leading-subheading);
+  letter-spacing: var(--tracking-subheading);
   color: var(--color-text);
   margin-bottom: var(--space-4);
 }
