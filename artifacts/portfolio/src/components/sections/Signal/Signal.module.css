@@ -1,22 +1,56 @@
-/* Signal section — 7-column left rail on desktop, full-width on mobile (IA Section 02) */
-.inner {
-  /* Desktop: 7-of-12 columns — deliberate asymmetry, right 5 columns intentionally empty.
-     Container max is 1120px with 32px gutters. 7/12 of the inner track, preserving the
-     12-col grid proportions. calc() with CSS custom properties is spec-compliant. */
+/* Signal section
+ * Desktop:  7-col text rail | 5-col network canvas
+ * ≤1023px:  text only, canvas hidden
+ * IA Section 02
+ * ─────────────────────────────────────────────────────────────── */
+
+/* ── layout grid ──────────────────────────────────────────────── */
+.layout {
   width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 1024px) {
+  .layout {
+    /* 7 text : 5 canvas — mirrors the original 7/12 col intent */
+    grid-template-columns: 7fr 5fr;
+    align-items: stretch;
+  }
+}
+
+/* ── text rail ────────────────────────────────────────────────── */
+.inner {
+  width: 100%;
+  padding-right: 0;
 }
 
 @media (min-width: 1024px) {
   .inner {
-    /* 7/12 of the 12-column grid width within the container */
-    max-width: calc((var(--container-max) - (var(--side-margin-desktop) * 2) + var(--col-gutter-desktop)) * 7 / 12 - var(--col-gutter-desktop));
+    padding-right: var(--space-12);
   }
 }
 
+/* ── canvas pane ──────────────────────────────────────────────── */
+.canvasPane {
+  display: none;
+  position: relative;
+  /* min-height ensures canvas has room even when text is short */
+  min-height: 360px;
+}
+
+@media (min-width: 1024px) {
+  .canvasPane {
+    display: block;
+  }
+}
+
+/* ── stamp ────────────────────────────────────────────────────── */
 .stamp {
   margin-bottom: var(--space-6);
 }
 
+/* ── section heading ──────────────────────────────────────────── */
 .heading {
   font-family: var(--font-sans);
   font-size: var(--text-heading-lg);
@@ -27,6 +61,7 @@
   margin-bottom: var(--space-8);
 }
 
+/* ── body paragraphs ──────────────────────────────────────────── */
 .body p {
   font-family: var(--font-sans);
   font-size: var(--text-subheading);
@@ -43,8 +78,8 @@
 }
 
 /* Reading Depth sets opacity via JS; transition is set inline by the hook */
-/* No static opacity rule needed here — hook manages it */
 
+/* ── mobile overrides ─────────────────────────────────────────── */
 @media (max-width: 639px) {
   .heading {
     font-size: var(--text-heading-sm);

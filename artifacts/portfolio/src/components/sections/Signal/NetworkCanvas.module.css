@@ -1,0 +1,15 @@
+/*
+ * NetworkCanvas — absolutely fills its .canvasPane parent so it
+ * stretches to exactly match the section content height.
+ * pointer-events: none keeps the canvas decorative and lets
+ * the section-level mousemove listener drive the interaction.
+ */
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+  opacity: 0.82;
+}
