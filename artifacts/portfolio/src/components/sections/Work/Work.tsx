@@ -54,7 +54,7 @@ export function Work() {
   return (
     <Section id="work" data-section="work" aria-labelledby="work-heading">
       <Container>
-        <StampLabel className={styles.stamp}>Selected Work</StampLabel>
+        <StampLabel className={styles.stamp}>Projects</StampLabel>
 
         <h2 id="work-heading" className={styles.heading}>
           Projects That Reflect My Interests

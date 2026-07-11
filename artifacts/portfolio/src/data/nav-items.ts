@@ -8,12 +8,12 @@ export interface NavItem {
 }
 
 export const NAV_ITEMS: NavItem[] = [
-  { label: 'Signal',  href: '#signal'  },
-  { label: 'Work',    href: '#work'    },
+  { label: 'Signal',     href: '#signal'     },
   { label: 'Experience', href: '#experience' },
-  { label: 'Stack',   href: '#stack'   },
-  { label: 'Research', href: '#research' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Projects',   href: '#work'       },
+  { label: 'Research',   href: '#research'   },
+  { label: 'Stack',      href: '#stack'      },
+  { label: 'Contact',    href: '#contact'    },
 ];
 
 export const NAV_RESUME_ITEM: NavItem = {

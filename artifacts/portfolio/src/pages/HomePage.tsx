@@ -23,7 +23,7 @@ import { Footer } from '../components/sections/Footer/Footer';
  * IA Section 0.1: "Hairlines appear between Signal and Work, Work and Approach,
  * before and after Research."
  */
-const SECTION_IDS = ['hero', 'signal', 'work', 'experience', 'stack', 'research', 'contact'];
+const SECTION_IDS = ['hero', 'signal', 'experience', 'work', 'research', 'stack', 'contact'];
 
 export default function HomePage() {
   return (
@@ -53,18 +53,18 @@ export default function HomePage() {
         {/* Section 02 — Signal (includes Hairline at bottom) */}
         <Signal />
 
-        {/* Section 03 — Work */}
+        {/* Section 03 — Experience (includes Hairline at bottom) */}
+        <Approach />
+
+        {/* Section 04 — Projects */}
         <Work />
         <Hairline />
 
-        {/* Section 04 — Approach (includes Hairline at bottom) */}
-        <Approach />
-
-        {/* Section 05 — Stack */}
-        <Stack />
-
-        {/* Section 06 — Research (includes Hairlines before and after) */}
+        {/* Section 05 — Research (includes Hairlines before and after) */}
         <Research />
+
+        {/* Section 06 — Stack */}
+        <Stack />
 
         {/* Section 07 — Contact (includes Hairline at top) */}
         <Contact />
