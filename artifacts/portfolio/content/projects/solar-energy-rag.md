@@ -3,8 +3,8 @@ githubNote: "Due to an NDA signed with the client, the GitHub repository cannot 
 slug: solar-energy-rag
 title: Solar Energy RAG
 subtitle: Retrieval-Augmented Generation Platform
-year: 2024
-category: AI/ML
+year: 2025
+category: Generative AI
 status: Completed
 shortDescription: A semantic document retrieval system enabling natural language interaction with structured solar energy reports using LangChain, vector embeddings, and modern language models.
 description: Built a semantic document retrieval system that enables natural language interaction with structured solar energy reports using LangChain, vector embeddings, and modern language models.

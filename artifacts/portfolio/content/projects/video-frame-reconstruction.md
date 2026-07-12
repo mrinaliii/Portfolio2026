@@ -3,8 +3,8 @@ githubUrl: https://github.com/mrinaliii/Video_Reconstruction
 slug: video-frame-reconstruction
 title: Video Frame Reconstruction
 subtitle: Graph-Based Frame Sequencing
-year: 2024
-category: SYSTEMS
+year: 2025
+category: Computer Vision
 status: Completed
 shortDescription: Reconstructs shuffled video frames using graph optimization and minimum spanning tree algorithms, leveraging OpenCV and parallel processing for efficient, scalable frame sequencing.
 description: Reconstructed shuffled video frames using graph optimization and minimum spanning tree algorithms. Leveraged OpenCV and parallel processing to improve frame sequencing efficiency and scalability, and evaluated reconstruction accuracy through similarity scoring and automated performance benchmarking.

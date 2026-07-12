@@ -3,8 +3,8 @@ githubUrl: https://github.com/mrinaliii/SecureSense
 slug: securesense
 title: SecureSense
 subtitle: AI-Powered Sensitive Data Protection
-year: 2023
-category: SECURITY
+year: 2026
+category: Cybersecurity
 status: Completed
 shortDescription: A secure document analysis platform using FastAPI, LangChain, and Ollama, with Elasticsearch-powered semantic search and retrieval across indexed documents.
 description: Developed a secure document analysis platform using FastAPI, LangChain, and Ollama. Integrated Elasticsearch to enable semantic search and efficient retrieval across indexed documents, with REST APIs supporting secure querying, modular workflows, and scalable backend services.

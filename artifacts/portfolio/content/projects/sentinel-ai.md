@@ -3,8 +3,8 @@ githubUrl: https://github.com/mrinaliii/sentinel-ai
 slug: sentinel-ai
 title: Sentinel AI
 subtitle: AI-Powered SOC Analyst
-year: 2024
-category: AI/ML
+year: 2026
+category: AI Security
 status: Completed
 shortDescription: An intelligent Security Operations platform combining large language models with SIEM technologies to assist analysts in threat investigation, alert analysis, and MITRE ATT&CK mapping.
 description: An intelligent Security Operations platform that combines large language models with modern SIEM technologies to assist analysts in threat investigation, alert analysis, and MITRE ATT&CK mapping.
