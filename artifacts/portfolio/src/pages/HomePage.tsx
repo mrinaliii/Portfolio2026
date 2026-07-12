@@ -29,15 +29,15 @@ export default function HomePage() {
   return (
     <>
       <Helmet>
-        <title>Mrinali Charhate — AI · Security · Systems</title>
+        <title>Mrinali Charhate - AI · Security · Systems</title>
         <meta
           name="description"
           content="Computer Science student specializing in Information Security, exploring the intersection of Artificial Intelligence, Machine Learning, and Cybersecurity."
         />
-        <meta property="og:title" content="Mrinali Charhate — AI · Security · Systems" />
+        <meta property="og:title" content="Mrinali Charhate - AI · Security · Systems" />
         <meta
           property="og:description"
-          content="Portfolio of Mrinali Charhate — building intelligent systems at the intersection of AI and security."
+          content="Portfolio of Mrinali Charhate - building intelligent systems at the intersection of AI and security."
         />
         <meta name="theme-color" content="#070911" />
       </Helmet>

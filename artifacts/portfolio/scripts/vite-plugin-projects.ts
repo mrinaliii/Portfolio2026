@@ -61,7 +61,7 @@ export interface Project {
  * Parse the markdown body into CaseStudySection[].
  *
  * Body convention:
- *   ## LABEL — Heading text
+ *   ## LABEL: Heading text
  *   (blank line)
  *   Body paragraph   OR   - bullet\n- bullet
  *
@@ -77,12 +77,12 @@ function parseSections(markdownBody: string): CaseStudySection[] {
     const lines = block.split('\n');
     const titleLine = lines[0].trim();
 
-    // Title format: "LABEL — Heading text"
-    const dashIdx = titleLine.indexOf(' — ');
+    // Title format: "LABEL: Heading text"
+    const dashIdx = titleLine.indexOf(': ');
     if (dashIdx === -1) continue;
 
     const label = titleLine.slice(0, dashIdx).trim();
-    const heading = titleLine.slice(dashIdx + 3).trim();
+    const heading = titleLine.slice(dashIdx + 2).trim();
 
     const bodyLines = lines.slice(1).join('\n').trim();
 

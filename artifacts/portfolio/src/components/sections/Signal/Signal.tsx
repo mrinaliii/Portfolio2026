@@ -40,7 +40,7 @@ export function Signal() {
                   careful implementation.
                 </p>
                 <p>
-                  That's why I enjoy building at the intersection of these disciplines — creating
+                  That's why I enjoy building at the intersection of these disciplines - creating
                   intelligent systems that are not only technically sound, but genuinely useful.
                 </p>
                 <p>

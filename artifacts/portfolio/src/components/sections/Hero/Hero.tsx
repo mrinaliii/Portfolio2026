@@ -153,14 +153,14 @@ export function Hero() {
             <Button
               variant="primary"
               onClick={() => scrollToSection("work")}
-              aria-label="Explore my work — scroll to projects"
+              aria-label="Explore my work - scroll to projects"
             >
               Explore My Work
             </Button>
             <Button
               variant="ghost"
               onClick={() => scrollToSection("signal")}
-              aria-label="About me — scroll to signal section"
+              aria-label="About me - scroll to signal section"
             >
               About Me
             </Button>

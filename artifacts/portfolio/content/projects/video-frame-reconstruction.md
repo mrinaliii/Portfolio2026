@@ -25,18 +25,18 @@ technologies:
 ---
 githubUrl: https://github.com/mrinaliii/Video_Reconstruction
 
-## PROJECT OVERVIEW — Putting the Story Back in Order
+## PROJECT OVERVIEW: Putting the Story Back in Order
 
-Given a set of video frames shuffled out of sequence, this project reconstructs the original temporal order without any timestamp metadata — relying purely on visual similarity between frames to infer what came before and after.
+Given a set of video frames shuffled out of sequence, this project reconstructs the original temporal order without any timestamp metadata - relying purely on visual similarity between frames to infer what came before and after.
 
-## TECHNICAL APPROACH — Similarity as a Graph Problem
+## TECHNICAL APPROACH: Similarity as a Graph Problem
 
-Each frame is treated as a node in a graph, with edge weights derived from pairwise visual similarity (computed via OpenCV feature comparisons). Reconstructing the sequence then becomes a minimum spanning tree problem — finding the path through the graph that minimizes total transition "distance" between consecutive frames, which closely approximates the original frame order.
+Each frame is treated as a node in a graph, with edge weights derived from pairwise visual similarity (computed via OpenCV feature comparisons). Reconstructing the sequence then becomes a minimum spanning tree problem - finding the path through the graph that minimizes total transition "distance" between consecutive frames, which closely approximates the original frame order.
 
-## PERFORMANCE — Scaling Similarity Computation
+## PERFORMANCE: Scaling Similarity Computation
 
 Pairwise similarity computation is the bottleneck for longer sequences, since it grows quadratically with frame count. Parallelizing the similarity matrix computation across available cores brought reconstruction time for longer sequences down to a practical range, and automated benchmarking was used to validate both accuracy and throughput as frame counts scaled up.
 
-## WHAT I LEARNED — Classical Algorithms Still Win
+## WHAT I LEARNED: Classical Algorithms Still Win
 
-It would have been easy to reach for a deep learning approach here, but a classical graph algorithm — applied to the right similarity metric — solved the problem accurately and far more efficiently. The lesson: matching the algorithm to the actual structure of the problem often beats defaulting to the most sophisticated tool available.
+It would have been easy to reach for a deep learning approach here, but a classical graph algorithm - applied to the right similarity metric - solved the problem accurately and far more efficiently. The lesson: matching the algorithm to the actual structure of the problem often beats defaulting to the most sophisticated tool available.
